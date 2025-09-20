@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|c:\\users\\rchtrchn\\documents\\github\\capstone\\assets\\scripts\\povscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\povscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "POVScript.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\POVScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\POVScript.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\POVScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\POVScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T05:56:28.926Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
