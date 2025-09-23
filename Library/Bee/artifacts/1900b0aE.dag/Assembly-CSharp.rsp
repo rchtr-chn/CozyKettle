@@ -441,6 +441,11 @@
 -analyzer:"E:/Unity Editors/Unity/Hub/Editor/6000.0.53f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"E:/Unity Editors/Unity/Hub/Editor/6000.0.53f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/Beverage.cs"
+"Assets/Scripts/BoilerButton.cs"
+"Assets/Scripts/BoilWaterMinigame.cs"
+"Assets/Scripts/BrewingStationManager.cs"
+"Assets/Scripts/CustomerManager.cs"
+"Assets/Scripts/Herb.cs"
 "Assets/Scripts/POVScript.cs"
 -langversion:9.0
 /deterministic

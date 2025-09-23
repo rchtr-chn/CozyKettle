@@ -61,7 +61,12 @@
     <Analyzer Include="E:\Unity Editors\Unity\Hub\Editor\6000.0.53f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BrewingStationManager.cs" />
+    <Compile Include="Assets\Scripts\BoilWaterMinigame.cs" />
+    <Compile Include="Assets\Scripts\Herb.cs" />
+    <Compile Include="Assets\Scripts\CustomerManager.cs" />
     <Compile Include="Assets\Scripts\POVScript.cs" />
+    <Compile Include="Assets\Scripts\BoilerButton.cs" />
     <Compile Include="Assets\Scripts\Beverage.cs" />
   </ItemGroup>
   <ItemGroup>
