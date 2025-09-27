@@ -17,6 +17,13 @@ public class BoilWaterMinigame : MonoBehaviour
 
     public bool timerReached = false;
 
+    private void OnEnable()
+    {
+        boilingWaterSlider.value = 0f;
+        timerReached = false;
+        isOverPoint = false;
+    }
+
     private void Update()
     {
         if(!timerReached)
@@ -89,6 +96,7 @@ public class BoilWaterMinigame : MonoBehaviour
 
         timerReached = true;
         BoilingPointCoroutine = null;
-        yield return null;
+        yield return new WaitForSeconds(2f);
+        this.gameObject.SetActive(false);
     }
 }

@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|c:\\users\\rchtrchn\\documents\\github\\capstone\\assets\\scripts\\boilerbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|c:\\users\\rchtrchn\\documents\\github\\capstone\\assets\\frenchpresshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\frenchpresshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\frenchpress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\frenchpress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\stove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\stove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\scripts\\boilerbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\boilerbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|c:\\users\\rchtrchn\\documents\\github\\capstone\\assets\\scripts\\boilwaterminigame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\scripts\\boilwaterminigame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\boilwaterminigame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\scripts\\brewingstationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\brewingstationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\dispenser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\dispenser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\kettle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|solutionrelative:assets\\kettle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{34D8EBE8-0895-E73F-36B9-6B7F011AA638}|Assembly-CSharp.csproj|C:\\Users\\rchtrchn\\Documents\\github\\capstone\\assets\\scripts\\customermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,56 +63,115 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BoilerButton.cs",
-              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilerButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BoilerButton.cs",
-              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilerButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BoilerButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABKAAAAAAAAAA==",
+              "Title": "FrenchPressHandler.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\FrenchPressHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\FrenchPressHandler.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\FrenchPressHandler.cs",
+              "RelativeToolTip": "Assets\\FrenchPressHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T16:22:06.394Z",
+              "WhenOpened": "2025-09-27T08:48:10.003Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FrenchPress.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\FrenchPress.cs",
+              "RelativeDocumentMoniker": "Assets\\FrenchPress.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\FrenchPress.cs",
+              "RelativeToolTip": "Assets\\FrenchPress.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T08:20:56.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Stove.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Stove.cs",
+              "RelativeDocumentMoniker": "Assets\\Stove.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Stove.cs",
+              "RelativeToolTip": "Assets\\Stove.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwCIAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T17:25:23.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dispenser.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Dispenser.cs",
+              "RelativeDocumentMoniker": "Assets\\Dispenser.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Dispenser.cs",
+              "RelativeToolTip": "Assets\\Dispenser.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T14:26:55.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Kettle.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Kettle.cs",
+              "RelativeDocumentMoniker": "Assets\\Kettle.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Kettle.cs",
+              "RelativeToolTip": "Assets\\Kettle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T14:04:00.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BoilerButton.cs",
+              "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilerButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BoilerButton.cs",
+              "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilerButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BoilerButton.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T16:22:06.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BoilWaterMinigame.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilWaterMinigame.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BoilWaterMinigame.cs",
               "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BoilWaterMinigame.cs",
               "RelativeToolTip": "Assets\\Scripts\\BoilWaterMinigame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowGMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T14:49:18.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-21T14:49:18.303Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "BrewingStationManager.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BrewingStationManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BrewingStationManager.cs",
               "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\BrewingStationManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\BrewingStationManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-21T13:43:44.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "CustomerManager.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\CustomerManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CustomerManager.cs",
               "ToolTip": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\CustomerManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\CustomerManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAACFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-20T15:43:13.982Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Herb.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\Herb.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Herb.cs",
@@ -104,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Beverage.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\Beverage.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Beverage.cs",
@@ -116,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "POVScript.cs",
               "DocumentMoniker": "C:\\Users\\rchtrchn\\Documents\\github\\capstone\\Assets\\Scripts\\POVScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\POVScript.cs",

@@ -5,9 +5,16 @@ public class BrewingStationManager : MonoBehaviour
 {
     public Button[] herbChoices;
 
-    public GameObject boilingWaterMinigameGO;
+    [SerializeField] GameObject boilingWaterMinigameGO;
+    [SerializeField] GameObject frenchPressMinigameGO;
 
-    void InvertInteractability(Button[] buttons)
+    private void Start()
+    {
+        InvertInteractability(herbChoices);
+        //boilingWaterMinigameGO.SetActive(false);
+    }
+
+    public void InvertInteractability(Button[] buttons)
     {
         foreach (var i in buttons)
         {
@@ -20,9 +27,13 @@ public class BrewingStationManager : MonoBehaviour
 
     public void StartBoilingMinigame()
     {
-        //sets herb jars disabled
-        InvertInteractability(herbChoices);
-
+        Debug.Log("Starting Boiling Minigame");
         boilingWaterMinigameGO.SetActive(true);
+    }
+
+    public void StartFrenchPressMinigame()
+    {
+        frenchPressMinigameGO.SetActive(true);
+        InvertInteractability(herbChoices);
     }
 }
