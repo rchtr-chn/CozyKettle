@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class FrenchPressMinigame : MonoBehaviour
 {
+    [SerializeField] private BrewingStationManager _brewingStationManager;
     public bool FullyPressed = false;
-    [SerializeField] GameObject _beverageOutput;
     [SerializeField] RectTransform _presser;
     Vector2 initialPosition = new Vector2(0, 175f);
     Vector2 finishedPosition = new Vector2(0, -50f);
-    Coroutine pressCoroutine;
+    Coroutine _pressCoroutine;
 
     private void OnEnable()
     {
@@ -26,17 +26,19 @@ public class FrenchPressMinigame : MonoBehaviour
         if (_presser.anchoredPosition.y <= finishedPosition.y && !FullyPressed)
         {
             FullyPressed = true;
-            if (pressCoroutine == null)
+            if (_pressCoroutine == null)
             {
-                pressCoroutine = StartCoroutine(WaitAndEndMinigame());
+                _pressCoroutine = StartCoroutine(WaitAndEndMinigame());
             }
         }
     }
 
     IEnumerator WaitAndEndMinigame()
     {
+        _brewingStationManager.CreateBeverage();
+
         yield return new WaitForSeconds(2f);
-        pressCoroutine = null;
+        _pressCoroutine = null;
         this.gameObject.SetActive(false);
     }
 }

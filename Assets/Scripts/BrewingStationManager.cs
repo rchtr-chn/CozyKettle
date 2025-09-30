@@ -1,14 +1,26 @@
-using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BrewingStationManager : MonoBehaviour
 {
     public Button[] herbChoices;
-    public BeverageChoices selectedBeverage;
 
-    [SerializeField] GameObject boilingWaterMinigameGO;
-    [SerializeField] GameObject frenchPressMinigameGO;
+    [SerializeField] private Beverage[] _beverages;
+    public Beverage SelectedBeverage;
+
+    [SerializeField] private GameObject _boilingWaterMinigameGO;
+    [SerializeField] private GameObject _frenchPressMinigameGO;
+
+    [SerializeField] private GameObject _beveragePrefab;
+    [SerializeField] private Transform _beverageParent;
+
+    private void Awake()
+    {
+        if(_beverages != null)
+        {
+            _beverages = Resources.LoadAll<Beverage>("OBJs/Beverages");
+        }
+    }
 
     private void Start()
     {
@@ -18,19 +30,19 @@ public class BrewingStationManager : MonoBehaviour
 
     public void SelectBlack()
     {
-        selectedBeverage = BeverageChoices.BlackTea;
+        SelectedBeverage = _beverages[0];
     }
     public void SelectGreen()
     {
-        selectedBeverage = BeverageChoices.GreenTea;
-    }
-    public void SelectOolong()
-    {
-        selectedBeverage = BeverageChoices.OolongTea;
+        SelectedBeverage = _beverages[1];
     }
     public void SelectMatcha()
     {
-        selectedBeverage = BeverageChoices.Matcha;
+        SelectedBeverage = _beverages[2];
+    }
+    public void SelectOolong()
+    {
+        SelectedBeverage = _beverages[3];
     }
 
     public void InvertInteractability(Button[] buttons)
@@ -46,21 +58,22 @@ public class BrewingStationManager : MonoBehaviour
 
     public void StartBoilingMinigame()
     {
-        Debug.Log("Starting Boiling Minigame");
-        boilingWaterMinigameGO.SetActive(true);
+        _boilingWaterMinigameGO.SetActive(true);
     }
 
     public void StartFrenchPressMinigame()
     {
-        frenchPressMinigameGO.SetActive(true);
+        _frenchPressMinigameGO.SetActive(true);
         InvertInteractability(herbChoices);
     }
-
-    public enum BeverageChoices
+    public void CreateBeverage()
     {
-        BlackTea,
-        GreenTea,
-        OolongTea,
-        Matcha
+        GameObject beverage = Instantiate(_beveragePrefab, _beverageParent);
+        BeverageDisplay beverageDisplay = beverage.GetComponent<BeverageDisplay>();
+        if (beverageDisplay != null)
+        {
+            beverageDisplay.BeverageSO = SelectedBeverage;
+            beverageDisplay.UpdateBeverageInfo();
+        }
     }
 }

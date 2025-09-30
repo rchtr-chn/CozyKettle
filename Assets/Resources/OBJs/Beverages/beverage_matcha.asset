@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb501a75b2f9ea14a8778a931fa38ceb, type: 3}
   m_Name: beverage_matcha
   m_EditorClassIdentifier: 
-  itemName: Matcha Milk Tea
+  itemName: Matcha
   itemDescription: 
