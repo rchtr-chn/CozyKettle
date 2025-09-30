@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ef731519cbe7247ba51733d15df771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _brewingStationManager: {fileID: 0}
+  _brewingStationManager: {fileID: 278352665}
   FullyPressed: 0
   _presser: {fileID: 124527289}
 --- !u!1 &1235081900
