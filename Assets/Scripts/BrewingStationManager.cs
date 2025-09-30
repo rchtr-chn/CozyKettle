@@ -1,9 +1,11 @@
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BrewingStationManager : MonoBehaviour
 {
     public Button[] herbChoices;
+    public BeverageChoices selectedBeverage;
 
     [SerializeField] GameObject boilingWaterMinigameGO;
     [SerializeField] GameObject frenchPressMinigameGO;
@@ -12,6 +14,23 @@ public class BrewingStationManager : MonoBehaviour
     {
         InvertInteractability(herbChoices);
         //boilingWaterMinigameGO.SetActive(false);
+    }
+
+    public void SelectBlack()
+    {
+        selectedBeverage = BeverageChoices.BlackTea;
+    }
+    public void SelectGreen()
+    {
+        selectedBeverage = BeverageChoices.GreenTea;
+    }
+    public void SelectOolong()
+    {
+        selectedBeverage = BeverageChoices.OolongTea;
+    }
+    public void SelectMatcha()
+    {
+        selectedBeverage = BeverageChoices.Matcha;
     }
 
     public void InvertInteractability(Button[] buttons)
@@ -35,5 +54,13 @@ public class BrewingStationManager : MonoBehaviour
     {
         frenchPressMinigameGO.SetActive(true);
         InvertInteractability(herbChoices);
+    }
+
+    public enum BeverageChoices
+    {
+        BlackTea,
+        GreenTea,
+        OolongTea,
+        Matcha
     }
 }
