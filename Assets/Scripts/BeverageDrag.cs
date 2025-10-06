@@ -6,6 +6,7 @@ public class BeverageDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private RectTransform _beverageTransform;
     [SerializeField] private RectTransform _beverageSpawnPos;
     [SerializeField] private RectTransform _beverageParent;
+    [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Canvas _canvas;
     private Vector2 _lastLegalPosition = Vector2.zero;
 
@@ -19,10 +20,13 @@ public class BeverageDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             _beverageSpawnPos = GameObject.Find("BeverageSpawnPos").GetComponent<RectTransform>();
         if (_beverageParent == null)
             _beverageParent = GameObject.Find("BeverageParent").GetComponent<RectTransform>();
+        if (_canvasGroup == null)
+            _canvasGroup = GetComponent<CanvasGroup>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         _beverageTransform.SetParent(_beverageParent);
+        _canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,6 +43,7 @@ public class BeverageDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         else
         {
+            _canvasGroup.blocksRaycasts = true;
             // Successfully delivered beverage to customer
         }
     }

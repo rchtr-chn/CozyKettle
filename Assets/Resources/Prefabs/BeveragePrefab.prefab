@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5466469326708259846}
   - component: {fileID: -6105032925021937925}
   - component: {fileID: 1334928167468505334}
+  - component: {fileID: 6333155428221218582}
   m_Layer: 5
   m_Name: BeveragePrefab
   m_TagString: Untagged
@@ -102,3 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6abdba234cb4942b38b55b31e3a490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beverageTransform: {fileID: 0}
+  _beverageSpawnPos: {fileID: 0}
+  _beverageParent: {fileID: 0}
+  _canvas: {fileID: 0}
+--- !u!225 &6333155428221218582
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278936628274401827}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

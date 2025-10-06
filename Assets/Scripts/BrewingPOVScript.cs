@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class POVScript : MonoBehaviour
+public class BrewingPOVScript : MonoBehaviour
 {
     [SerializeField] BrewingStationManager _brewingStationManager;
     private RectTransform _rectTransform;
@@ -37,12 +37,10 @@ public class POVScript : MonoBehaviour
 
         if (_mousePos.y < 100f && !IsLookingDown && _lerpCoroutine == null)
         {
-            Debug.Log("Looking down!");
             _lerpCoroutine = StartCoroutine(LerpPOV(_brewingDeskPos));
         }
         else if (_mousePos.y > 990f && IsLookingDown && _lerpCoroutine == null)
         {
-            Debug.Log("Looking up!");
             _lerpCoroutine = StartCoroutine(LerpPOV(_defaultPos));
         }
     }

@@ -698,11 +698,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6102944c50b70498129dd727b54d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _herbChoices: []
-  _addOnChoices: []
-  _herbs: []
-  _addOns: []
-  _beverages: []
+  _herbs:
+  - {fileID: 11400000, guid: 9b91cb050192f0e4683683e08263af88, type: 2}
+  - {fileID: 11400000, guid: 99bc01426befe104c99faefeb1b0aaa0, type: 2}
+  - {fileID: 11400000, guid: 0a600794112072b409526a126b0b3c1c, type: 2}
+  - {fileID: 11400000, guid: 703da318c09cbd14e8111c4e44a497bd, type: 2}
+  _addOns:
+  - {fileID: 11400000, guid: b6ca3a749a496d7449d1315fc6ffa059, type: 2}
+  - {fileID: 11400000, guid: 3ceeedbb42f3f4c41ae4b3f1f1185e59, type: 2}
+  - {fileID: 11400000, guid: 5a6d1fba25607684c8fc18712cd4993b, type: 2}
+  - {fileID: 11400000, guid: 92ce5b80115deac47a0557c7187decae, type: 2}
+  _beverages:
+  - {fileID: 11400000, guid: 5e4e4929d40bfcb488f3ef767c9ccaae, type: 2}
+  - {fileID: 11400000, guid: baede4c8d03b91f4891f492287626997, type: 2}
+  - {fileID: 11400000, guid: b17ce98b466be7948a3597a1e12760ce, type: 2}
+  - {fileID: 11400000, guid: cb1e28fb032b38942bfb37617858eae8, type: 2}
+  - {fileID: 11400000, guid: bddce4ff1cbb1e5489920f3f84048c56, type: 2}
+  - {fileID: 11400000, guid: db38aa5fb3e45624e81e2089f6df5b7b, type: 2}
+  - {fileID: 11400000, guid: 386300402d3d57d4fa1073ca893a61ec, type: 2}
+  - {fileID: 11400000, guid: dcdc3d38a236afa43a631b73187e9627, type: 2}
+  - {fileID: 11400000, guid: 751fe9e2da5d75141b8da4609ced7fce, type: 2}
+  - {fileID: 11400000, guid: 74e226ad232ce574d8854cdac4b83945, type: 2}
+  - {fileID: 11400000, guid: 445ae6fbce214754ab6c14e9ecc87d2b, type: 2}
+  - {fileID: 11400000, guid: f6f856a49f2ab374b8a8b879bd9f3574, type: 2}
+  - {fileID: 11400000, guid: 6fa81c613dc8c234ba63d45ddf3cd601, type: 2}
+  - {fileID: 11400000, guid: aef12aa1f3956df4bb8b2e5a9b010727, type: 2}
+  - {fileID: 11400000, guid: 1492fc36d721352419684aaab8c004c2, type: 2}
+  - {fileID: 11400000, guid: 4518cb43a15c2044989e8d5a92da733a, type: 2}
   SelectedHerb: {fileID: 0}
   SelectedAddOn: {fileID: 0}
   SelectedBeverage: {fileID: 0}
@@ -1143,7 +1165,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -1151,6 +1172,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1253,6 +1275,23 @@ MonoBehaviour:
   - {fileID: 2019683100}
   - {fileID: 479184953}
   - {fileID: 316594846}
+  _availableBeverages:
+  - {fileID: 11400000, guid: 5e4e4929d40bfcb488f3ef767c9ccaae, type: 2}
+  - {fileID: 11400000, guid: baede4c8d03b91f4891f492287626997, type: 2}
+  - {fileID: 11400000, guid: b17ce98b466be7948a3597a1e12760ce, type: 2}
+  - {fileID: 11400000, guid: cb1e28fb032b38942bfb37617858eae8, type: 2}
+  - {fileID: 11400000, guid: bddce4ff1cbb1e5489920f3f84048c56, type: 2}
+  - {fileID: 11400000, guid: db38aa5fb3e45624e81e2089f6df5b7b, type: 2}
+  - {fileID: 11400000, guid: 386300402d3d57d4fa1073ca893a61ec, type: 2}
+  - {fileID: 11400000, guid: dcdc3d38a236afa43a631b73187e9627, type: 2}
+  - {fileID: 11400000, guid: 751fe9e2da5d75141b8da4609ced7fce, type: 2}
+  - {fileID: 11400000, guid: 74e226ad232ce574d8854cdac4b83945, type: 2}
+  - {fileID: 11400000, guid: 445ae6fbce214754ab6c14e9ecc87d2b, type: 2}
+  - {fileID: 11400000, guid: f6f856a49f2ab374b8a8b879bd9f3574, type: 2}
+  - {fileID: 11400000, guid: 6fa81c613dc8c234ba63d45ddf3cd601, type: 2}
+  - {fileID: 11400000, guid: aef12aa1f3956df4bb8b2e5a9b010727, type: 2}
+  - {fileID: 11400000, guid: 1492fc36d721352419684aaab8c004c2, type: 2}
+  - {fileID: 11400000, guid: 4518cb43a15c2044989e8d5a92da733a, type: 2}
 --- !u!4 &545477825
 Transform:
   m_ObjectHideFlags: 0

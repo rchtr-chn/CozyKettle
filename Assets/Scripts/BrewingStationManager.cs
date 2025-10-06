@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class BrewingStationManager : MonoBehaviour
 {
-    [SerializeField] private Button[] _herbChoices;
-    [SerializeField] private Button[] _addOnChoices;
-
     [SerializeField] private List<Herb> _herbs = new List<Herb>();
     [SerializeField] private List<AddOn> _addOns = new List<AddOn>();
     [SerializeField] private List<Beverage> _beverages = new List<Beverage>();
@@ -40,7 +37,7 @@ public class BrewingStationManager : MonoBehaviour
         }
         if (_addOns != null)
         {
-            AddOn[] load = Resources.LoadAll<AddOn>("OBJs/AddOn");
+            AddOn[] load = Resources.LoadAll<AddOn>("OBJs/AddOns");
             _addOns = new List<AddOn>(load);
         }
     }
@@ -73,9 +70,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             if(SelectedAddOn == null)
             {
-                SelectedAddOn = ScriptableObject.CreateInstance<AddOn>();
-                SelectedAddOn.AddOnName = "No Add-On";
-                SelectedAddOn.AddOnTasteProfile = TasteProfile.None;
+                SelectedAddOn = _addOns[_addOns.Count - 1]; //default to last add-on (none) if no add-on selected
             }
 
             SelectedBeverage = GetBeverageResult(SelectedHerb.HerbTasteProfile, SelectedAddOn.AddOnTasteProfile);
@@ -88,24 +83,11 @@ public class BrewingStationManager : MonoBehaviour
 
     Beverage GetBeverageResult(TasteProfile herbTP, TasteProfile addOnTP)
     {
-        if(addOnTP == TasteProfile.None)
+        foreach (var bev in _beverages)
         {
-            foreach (var bev in _beverages)
+            if (bev.BeverageTasteProfile.Length == 2 && ((bev.BeverageTasteProfile[0] == herbTP && bev.BeverageTasteProfile[1] == addOnTP) || (bev.BeverageTasteProfile[0] == addOnTP && bev.BeverageTasteProfile[1] == herbTP)))
             {
-                if (bev.BeverageTasteProfile.Length == 1 && bev.BeverageTasteProfile[0] == herbTP)
-                {
-                    return bev;
-                }
-            }
-        }
-        else
-        {
-            foreach (var bev in _beverages)
-            {
-                if (bev.BeverageTasteProfile.Length == 2 && ((bev.BeverageTasteProfile[0] == herbTP && bev.BeverageTasteProfile[1] == addOnTP) || (bev.BeverageTasteProfile[0] == addOnTP && bev.BeverageTasteProfile[1] == herbTP)))
-                {
-                    return bev;
-                }
+                return bev;
             }
         }
         return _beverages[0]; //default to first beverage if no match found
