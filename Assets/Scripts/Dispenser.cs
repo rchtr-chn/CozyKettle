@@ -1,48 +1,55 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Dispenser : MonoBehaviour, IDropHandler
 {
-    [SerializeField] Vector2 offsetPos = new Vector2(0f, -110f);
-    [SerializeField] RectTransform dispenserRectTransform;
-    [SerializeField] float fillDuration = 2f;
+    [SerializeField] private BrewingStationManager _brewingStationManager;
+    [SerializeField] private Vector2 _dispenserSlotPos = new Vector2(0f, -110f);
+    [SerializeField] private RectTransform _dispenserRectTransform;
+    private Transform _kettleOriginalParent;
+
+    private void Awake()
+    {
+        if (_brewingStationManager == null)
+        {
+            _brewingStationManager = FindAnyObjectByType<BrewingStationManager>();
+        }
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
             Kettle kettle = eventData.pointerDrag.GetComponent<Kettle>();
             RectTransform kettleTransform = kettle.GetComponent<RectTransform>();
-            if (kettle != null && !kettle.isFilled)
+            if (kettle != null)
             {
+                _kettleOriginalParent = kettleTransform.parent;
+
+                _dispenserRectTransform.SetAsLastSibling();
                 kettle.transform.SetParent(this.transform.parent);
-
-                dispenserRectTransform.SetAsLastSibling();
-
-                kettleTransform.anchoredPosition = offsetPos;
-
-                kettle.latestLegalPosition = kettleTransform.anchoredPosition;
+                kettleTransform.anchoredPosition = _dispenserSlotPos;
             }
             else
             {
-                kettleTransform.anchoredPosition = kettle.latestLegalPosition;
+                kettleTransform.anchoredPosition = kettle.LatestLegalPosition;
             }
         }
     }
 
-    public void FillKettle(Kettle kettle)
+    public void ConfirmSelection(Kettle kettle)
     {
-        if (!kettle.isFilled && !kettle.dispenserLocked && kettle.transform.parent.name == this.transform.parent.name)
+        if (_brewingStationManager.SelectedHerb == null)
         {
-            StartCoroutine(FillKettleCoroutine(kettle, fillDuration));
+            return;
         }
-    }
+        _brewingStationManager.lockPOV = true;
+        if (kettle.transform.parent.name == this.transform.parent.name)
+        {
+            _brewingStationManager.StartBrewingSequence();
+        }
 
-    IEnumerator FillKettleCoroutine(Kettle kettle, float fillDuration)
-    {
-        kettle.dispenserLocked = true;
-        yield return new WaitForSeconds(fillDuration);
-        kettle.isFilled = true;
-        kettle.dispenserLocked = false;
+        RectTransform kettleTransform = kettle.GetComponent<RectTransform>();
+        kettle.transform.SetParent(_kettleOriginalParent);
+        kettleTransform.anchoredPosition = kettle.LatestLegalPosition;
     }
 }

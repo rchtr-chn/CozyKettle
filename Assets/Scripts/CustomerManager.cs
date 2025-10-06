@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CustomerManager : MonoBehaviour
 {
-    public GameObject customerPrefab;
-    public RectTransform customerEntrancePos;
-    public RectTransform customerExitPos;
-    public List<GameObject> customerSeats;
+    public GameObject CustomerPrefab;
+    public RectTransform CustomerEntrancePos;
+    public RectTransform CustomerExitPos;
+    public List<GameObject> CustomerSeats;
 
     void Update()
     {
-        foreach(GameObject seat in customerSeats)
+        foreach(GameObject seat in CustomerSeats)
         {
             //Debug.Log(seat);
             if(seat.transform.childCount == 0)
             {
                 Debug.Log(seat);
-                GameObject customer = Instantiate(customerPrefab, customerEntrancePos.position, Quaternion.identity, seat.transform);
+                GameObject customer = Instantiate(CustomerPrefab, CustomerEntrancePos.position, Quaternion.identity, seat.transform);
                 float randSpeed = Random.Range(1f, 5f);
                 StartCoroutine(MoveToSeat(customer, seat, randSpeed));
             }
@@ -32,6 +31,10 @@ public class CustomerManager : MonoBehaviour
             customer.transform.position = Vector3.MoveTowards(customer.transform.position, target.transform.position, speed * 500f * Time.deltaTime);
             yield return null;
         }
+
+        yield return new WaitForSeconds(1f);
+        Customer custScript = customer.GetComponent<Customer>();
+        custScript.PromptRequest();
 
         yield return null;
     }

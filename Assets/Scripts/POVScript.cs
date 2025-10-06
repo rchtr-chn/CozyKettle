@@ -1,48 +1,55 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class POVScript : MonoBehaviour
 {
-    public RectTransform rectTransform;
+    [SerializeField] BrewingStationManager _brewingStationManager;
+    private RectTransform _rectTransform;
 
-    Vector3 defaultPos = new Vector3(0f, -420f, 0f);
-    Vector3 brewingDeskPos = new Vector3(0f, 420f, 0f);
-    public bool isLookingDown = false;
+    private Vector3 _defaultPos = new Vector3(0f, -420f, 0f);
+    private Vector3 _brewingDeskPos = new Vector3(0f, 420f, 0f);
+    public bool IsLookingDown = false;
 
-    Vector2 mousePos;
+    private Vector2 _mousePos;
 
-    Coroutine lerpCoroutine;
+    Coroutine _lerpCoroutine;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        if (_brewingStationManager == null)
+        {
+            _brewingStationManager = FindAnyObjectByType<BrewingStationManager>();
+        }
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     private void Update()
     {
-        CheckPlayerPOV();
+        if(!_brewingStationManager.lockPOV)
+        {
+            CheckPlayerPOV();
+        }
     }
 
     private void CheckPlayerPOV()
     {
-        mousePos = Input.mousePosition;
+        _mousePos = Input.mousePosition;
 
-        if (mousePos.y < 100f && !isLookingDown && lerpCoroutine == null)
+        if (_mousePos.y < 100f && !IsLookingDown && _lerpCoroutine == null)
         {
             Debug.Log("Looking down!");
-            lerpCoroutine = StartCoroutine(LerpPOV(brewingDeskPos));
+            _lerpCoroutine = StartCoroutine(LerpPOV(_brewingDeskPos));
         }
-        else if (mousePos.y > 990f && isLookingDown && lerpCoroutine == null)
+        else if (_mousePos.y > 990f && IsLookingDown && _lerpCoroutine == null)
         {
             Debug.Log("Looking up!");
-            lerpCoroutine = StartCoroutine(LerpPOV(defaultPos));
+            _lerpCoroutine = StartCoroutine(LerpPOV(_defaultPos));
         }
     }
 
     IEnumerator LerpPOV(Vector3 target)
     {
-        isLookingDown = !isLookingDown;
+        IsLookingDown = !IsLookingDown;
 
         float timer = 0f;
         float duration = 0.7f;
@@ -51,9 +58,9 @@ public class POVScript : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            rectTransform.anchoredPosition = Vector3.Lerp(rectTransform.anchoredPosition, target, timer);
+            _rectTransform.anchoredPosition = Vector3.Lerp(_rectTransform.anchoredPosition, target, timer);
             yield return null;
         }
-        lerpCoroutine = null;
+        _lerpCoroutine = null;
     }
 }

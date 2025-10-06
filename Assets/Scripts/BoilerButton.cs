@@ -4,26 +4,26 @@ using UnityEngine.UI;
 
 public class BoilerButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public BoilWaterMinigame minigameScript;
+    public BoilWaterMinigame MinigameScript;
 
-    public Slider boilingWaterSlider;
-    bool isPressed = false;
+    public Slider BoilingWaterSlider;
+    private bool _isPressed = false;
 
-    [SerializeField] float boilingPointGain = 0.4f;
-    [SerializeField] float boilingPointLoss = 0.6f;
+    [SerializeField] private float _boilingPointGain = 0.4f;
+    [SerializeField] private float _boilingPointLoss = 0.6f;
     public void OnPointerDown(PointerEventData eventData)
     {
-        isPressed = true;
+        _isPressed = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isPressed = false;
+        _isPressed = false;
     }
 
     private void Update()
     {
-        if(!minigameScript.timerReached)
+        if(!MinigameScript.TimerReached)
         {
             UpdateSliderValue();
         }
@@ -31,15 +31,15 @@ public class BoilerButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     void UpdateSliderValue()
     {
-        if (isPressed)
+        if (_isPressed)
         {
-            boilingWaterSlider.value += boilingPointGain * Time.deltaTime;
+            BoilingWaterSlider.value += _boilingPointGain * Time.deltaTime;
         }
         else
         {
-            boilingWaterSlider.value -= boilingPointLoss * Time.deltaTime;
+            BoilingWaterSlider.value -= _boilingPointLoss * Time.deltaTime;
         }
 
-        boilingWaterSlider.value = Mathf.Clamp01(boilingWaterSlider.value);
+        BoilingWaterSlider.value = Mathf.Clamp01(BoilingWaterSlider.value);
     }
 }

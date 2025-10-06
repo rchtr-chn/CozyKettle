@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6326422468793368167}
   - component: {fileID: 5466469326708259846}
   - component: {fileID: -6105032925021937925}
+  - component: {fileID: 1334928167468505334}
   m_Layer: 5
   m_Name: BeveragePrefab
   m_TagString: Untagged
@@ -86,5 +87,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63365085057aca24da87fa36f1a47585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeverageSO: {fileID: 0}
+--- !u!114 &1334928167468505334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278936628274401827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6abdba234cb4942b38b55b31e3a490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

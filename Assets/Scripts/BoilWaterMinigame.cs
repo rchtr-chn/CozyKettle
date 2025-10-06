@@ -4,29 +4,29 @@ using UnityEngine.UI;
 
 public class BoilWaterMinigame : MonoBehaviour
 {
-    public Slider boilingWaterSlider;
+    public Slider BoilingWaterSlider;
 
-    [SerializeField] float boilingPointMin = 0.7f;
-    [SerializeField] float boilingPointMax = 0.9f;
+    [SerializeField] private float _boilingPointMin = 0.7f;
+    [SerializeField] private float _boilingPointMax = 0.9f;
 
-    Coroutine BoilingPointCoroutine;
+    Coroutine _boilingPointCoroutine;
 
-    [SerializeField] float onPointTimer = 2.0f;
-    [SerializeField] float overPointTimer = 4.0f;
-    bool isOverPoint = false;
+    [SerializeField] private float _onPointTimer = 2.0f;
+    [SerializeField] private float _overPointTimer = 4.0f;
+    private bool _isOverPoint = false;
 
-    public bool timerReached = false;
+    public bool TimerReached = false;
 
     private void OnEnable()
     {
-        boilingWaterSlider.value = 0f;
-        timerReached = false;
-        isOverPoint = false;
+        BoilingWaterSlider.value = 0f;
+        TimerReached = false;
+        _isOverPoint = false;
     }
 
     private void Update()
     {
-        if(!timerReached)
+        if(!TimerReached)
         {
             CheckBoilTemp();
         }
@@ -35,41 +35,41 @@ public class BoilWaterMinigame : MonoBehaviour
     void CheckBoilTemp()
     {
         //check if point is over min temp
-        if (boilingWaterSlider.value >= boilingPointMin)
+        if (BoilingWaterSlider.value >= _boilingPointMin)
         {
             //if timer hasnt been initiated and point under max, start on point timer
-            if (boilingWaterSlider.value <= boilingPointMax)
+            if (BoilingWaterSlider.value <= _boilingPointMax)
             {
-                if (BoilingPointCoroutine == null)
+                if (_boilingPointCoroutine == null)
                 {
-                    BoilingPointCoroutine = StartCoroutine(BoilingOnPoint(onPointTimer, isOverPoint));
+                    _boilingPointCoroutine = StartCoroutine(BoilingOnPoint(_onPointTimer, _isOverPoint));
                 }
-                else if (isOverPoint)
+                else if (_isOverPoint)
                 {
-                    isOverPoint = false;
-                    StopCoroutine(BoilingPointCoroutine);
-                    BoilingPointCoroutine = null;
+                    _isOverPoint = false;
+                    StopCoroutine(_boilingPointCoroutine);
+                    _boilingPointCoroutine = null;
                 }
             }
-            else if (boilingWaterSlider.value > boilingPointMax)
+            else if (BoilingWaterSlider.value > _boilingPointMax)
             {
-                if(!isOverPoint && BoilingPointCoroutine != null)
+                if(!_isOverPoint && _boilingPointCoroutine != null)
                 {
-                    StopCoroutine(BoilingPointCoroutine);
-                    BoilingPointCoroutine = null;
+                    StopCoroutine(_boilingPointCoroutine);
+                    _boilingPointCoroutine = null;
 
-                    isOverPoint = true;
-                    BoilingPointCoroutine = StartCoroutine(BoilingOnPoint(overPointTimer, isOverPoint));
+                    _isOverPoint = true;
+                    _boilingPointCoroutine = StartCoroutine(BoilingOnPoint(_overPointTimer, _isOverPoint));
                 }
             }
         }
         else
         {
             //reset on point timer outside min zones
-            if(BoilingPointCoroutine != null)
+            if(_boilingPointCoroutine != null)
             {
-                StopCoroutine(BoilingPointCoroutine);
-                BoilingPointCoroutine = null;
+                StopCoroutine(_boilingPointCoroutine);
+                _boilingPointCoroutine = null;
             }
             Debug.Log("Cooking under boiling point");
         }
@@ -94,8 +94,8 @@ public class BoilWaterMinigame : MonoBehaviour
             yield return null;
         }
 
-        timerReached = true;
-        BoilingPointCoroutine = null;
+        TimerReached = true;
+        _boilingPointCoroutine = null;
         yield return new WaitForSeconds(2f);
         this.gameObject.SetActive(false);
     }

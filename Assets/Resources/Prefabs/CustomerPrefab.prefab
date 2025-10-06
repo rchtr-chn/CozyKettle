@@ -88,3 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ce1db4fb221874687b0d5d82bbb69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _availableBeverages: []
+  _beverageRequested: {fileID: 0}
+  _speechBubble: {fileID: 1334073915454536558, guid: a2a7cda2e7a2e7e4080a4f3a4c07a378, type: 3}

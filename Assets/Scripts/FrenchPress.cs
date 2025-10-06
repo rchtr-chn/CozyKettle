@@ -9,10 +9,9 @@ public class FrenchPress : MonoBehaviour, IDropHandler
         if(eventData.pointerDrag != null)
         {
             Kettle kettle = eventData.pointerDrag.GetComponent<Kettle>();
-            if (kettle != null && kettle.isFilled)
+            if (kettle != null)
             {
-                kettle.isFilled = false;
-                brewingStationManager.InvertInteractability(brewingStationManager.herbChoices);
+                //brewingStationManager.InvertInteractability(brewingStationManager.herbChoices);
             }
         }
     }

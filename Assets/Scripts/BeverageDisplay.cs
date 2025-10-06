@@ -15,8 +15,8 @@ public class BeverageDisplay : MonoBehaviour
 
     public void UpdateBeverageInfo()
     {
-        _beverageImage.sprite = BeverageSO.itemSprite;
-        _beverageName = BeverageSO.itemName;
-        _beverageDescription = BeverageSO.itemDescription;
+        _beverageImage.sprite = BeverageSO.BeverageSprite;
+        _beverageName = BeverageSO.BeverageName;
+        _beverageDescription = BeverageSO.BeverageDescription;
     }
 }

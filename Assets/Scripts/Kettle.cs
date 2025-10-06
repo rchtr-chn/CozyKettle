@@ -1,53 +1,49 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Kettle : MonoBehaviour,IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Kettle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public bool dispenserLocked = false;
-    public bool isFilled = false;
+    public Vector3 LatestLegalPosition;
 
-    public Vector3 latestLegalPosition;
-
-    [SerializeField] GameObject dispenserSlot;
-    [SerializeField] GameObject KettleStove;
-
-    Canvas canvas;
-    RectTransform rectTransform;
-    CanvasGroup canvasGroup;
+    [SerializeField] private Dispenser _dispenser;
+    private Canvas _canvas;
+    private RectTransform _rectTransform;
+    private CanvasGroup _canvasGroup;
 
     private void Awake()
     {
-        canvas = GetComponentInParent<Canvas>();
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        latestLegalPosition = rectTransform.anchoredPosition;
+        _canvas = GetComponentInParent<Canvas>();
+        _rectTransform = GetComponent<RectTransform>();
+        _canvasGroup = GetComponent<CanvasGroup>();
+        LatestLegalPosition = _rectTransform.anchoredPosition;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = false;
+        if (transform.parent.name != _dispenser.transform.parent.name)
+        {
+            _canvasGroup.blocksRaycasts = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(!dispenserLocked)
+        if(transform.parent.name != _dispenser.transform.parent.name)
         {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;
-        Dispenser dispenser = eventData.pointerEnter?.GetComponent<Dispenser>();
-        Stove stove = eventData.pointerEnter?.GetComponent<Stove>();
-        if (dispenser == null && transform.parent.name != dispenserSlot.name)
+        if (transform.parent.name != _dispenser.transform.parent.name)
         {
-            rectTransform.anchoredPosition = latestLegalPosition;
-        }
-        else if(stove == null && transform.parent.name != KettleStove.name)
-        {
-            rectTransform.anchoredPosition = latestLegalPosition;
+            _canvasGroup.blocksRaycasts = true;
+            Dispenser dispenser = eventData.pointerEnter?.GetComponent<Dispenser>();
+            if (dispenser == null)
+            {
+                _rectTransform.anchoredPosition = LatestLegalPosition;
+            }
         }
     }
 }

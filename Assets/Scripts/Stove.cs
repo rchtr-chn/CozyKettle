@@ -1,18 +1,16 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Stove : MonoBehaviour, IDropHandler
 {
-    [SerializeField] RectTransform rectTransform;
-    [SerializeField] BrewingStationManager brewingStationManager;
+    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private BrewingStationManager _brewingStationManager;
     Vector2 offsetPos = new Vector2(0f, 150f);
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        //brewingStationManager = GetComponentInParent<BrewingStationManager>();
+        _rectTransform = GetComponent<RectTransform>();
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -23,24 +21,13 @@ public class Stove : MonoBehaviour, IDropHandler
             {
                 kettle.transform.SetParent(this.transform);
 
-                rectTransform.SetAsLastSibling();
+                _rectTransform.SetAsLastSibling();
 
                 RectTransform kettleTransform = kettle.GetComponent<RectTransform>();
                 kettleTransform.anchoredPosition = offsetPos;
 
-                kettle.latestLegalPosition = kettleTransform.anchoredPosition;
-
-                if(kettle.isFilled)
-                {
-                    StartCoroutine(InitiateMinigame());
-                }
+                kettle.LatestLegalPosition = kettleTransform.anchoredPosition;
             }
         }
-    }
-
-    IEnumerator InitiateMinigame()
-    {
-        yield return new WaitForSeconds(0.5f);
-        brewingStationManager.StartBoilingMinigame();
     }
 }

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82b072346dc726449e2bc9833d22aa9, type: 3}
   m_Name: herb_black-tea
   m_EditorClassIdentifier: 
-  herbName: 
-  herbDescription: 
+  HerbName: Black Tea Leaf
+  HerbDescription: 
+  HerbSprite: {fileID: 0}
+  HerbTasteProfile: 1

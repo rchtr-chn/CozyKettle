@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Beverage", menuName = "Items/Beverages")]
 public class Beverage : ScriptableObject
 {
-    public string itemName;
-    public string itemDescription;
-    public Sprite itemSprite;
+    public string BeverageName;
+    public string BeverageDescription;
+    public Sprite BeverageSprite;
+    public TasteProfile[] BeverageTasteProfile;
 }

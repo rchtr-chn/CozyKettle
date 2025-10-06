@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb501a75b2f9ea14a8778a931fa38ceb, type: 3}
-  m_Name: beverage_green-tea
+  m_Name: BeverageOolongMilk
   m_EditorClassIdentifier: 
-  itemName: Green Tea
-  itemDescription: 
+  BeverageName: 
+  BeverageDescription: 
+  BeverageSprite: {fileID: 0}
+  BeverageTasteProfile: 0200000004000000

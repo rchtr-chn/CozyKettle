@@ -1,18 +1,16 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class FrenchPressHandler : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] FrenchPressMinigame minigameHandler;
-    [SerializeField] RectTransform presserRTransform;
+    [SerializeField] private FrenchPressMinigame _minigameHandler;
+    [SerializeField] private RectTransform _presserRTransform;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!minigameHandler.FullyPressed)
+        if(!_minigameHandler.FullyPressed)
         {
-            presserRTransform.anchoredPosition -= new Vector2(0, 20f);
+            _presserRTransform.anchoredPosition -= new Vector2(0, 20f);
         }
     }
 }
