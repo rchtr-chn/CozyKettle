@@ -6,9 +6,11 @@ public class BrewingPOVScript : MonoBehaviour
     [SerializeField] BrewingStationManager _brewingStationManager;
     private RectTransform _rectTransform;
 
+    [SerializeField] private float _lerpDuration = 0.7f;
     private Vector3 _defaultPos = new Vector3(0f, -420f, 0f);
     private Vector3 _brewingDeskPos = new Vector3(0f, 420f, 0f);
     public bool IsLookingDown = false;
+    public bool IsOnPhone = false;
 
     private Vector2 _mousePos;
 
@@ -25,7 +27,7 @@ public class BrewingPOVScript : MonoBehaviour
 
     private void Update()
     {
-        if(!_brewingStationManager.lockPOV)
+        if(!_brewingStationManager.lockPOV && !IsOnPhone)
         {
             CheckPlayerPOV();
         }
@@ -50,12 +52,10 @@ public class BrewingPOVScript : MonoBehaviour
         IsLookingDown = !IsLookingDown;
 
         float timer = 0f;
-        float duration = 0.7f;
 
-        while (timer < duration)
+        while (timer < _lerpDuration)
         {
             timer += Time.deltaTime;
-
             _rectTransform.anchoredPosition = Vector3.Lerp(_rectTransform.anchoredPosition, target, timer);
             yield return null;
         }

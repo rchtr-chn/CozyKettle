@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class PlantStateManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    PlantBaseState _currentState;
+    public PlantBaseState CurrentState;
     public PlantInitialState InitialState = new PlantInitialState();
     public PlantGrowingState GrowingState = new PlantGrowingState();
     public PlantReadyState ReadyState = new PlantReadyState();
@@ -23,19 +23,19 @@ public class PlantStateManager : MonoBehaviour, IDragHandler, IBeginDragHandler,
         _canvas = GetComponent<Canvas>();
         _rectTransform = GetComponent<RectTransform>();
 
-        _currentState = InitialState;
-        _currentState.EnterState(this);
+        //_currentState = InitialState;
+        //_currentState.EnterState(this);
     }
 
     private void Update()
     {
-        _currentState.UpdateState(this);
+        CurrentState.UpdateState(this);
     }
 
     public void SwitchState(PlantBaseState state)
     {
-        _currentState = state;
-        _currentState.EnterState(this);
+        CurrentState = state;
+        CurrentState.EnterState(this);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
