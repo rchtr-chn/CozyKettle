@@ -44,12 +44,12 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        _brewingPOVScript.IsOnPhone = false;
         if (_lerpCoroutine != null)
         {
             StopCoroutine(_lerpCoroutine);
         }
         _lerpCoroutine = StartCoroutine(LerpToPos(_defaultPos));
+        _brewingPOVScript.IsOnPhone = false;
     }
 
     IEnumerator LerpToPos(Vector3 target)

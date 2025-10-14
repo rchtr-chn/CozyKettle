@@ -10,6 +10,7 @@ public class BrewingPOVScript : MonoBehaviour
     private Vector3 _defaultPos = new Vector3(0f, -420f, 0f);
     private Vector3 _brewingDeskPos = new Vector3(0f, 420f, 0f);
     public bool IsLookingDown = false;
+
     public bool IsOnPhone = false;
 
     private Vector2 _mousePos;
