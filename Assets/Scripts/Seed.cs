@@ -4,6 +4,8 @@ using UnityEngine;
 public class Seed : ScriptableObject
 {
     public string seedName;
+    public string seedDescription;
+    public string ID;
     public Sprite seedIcon;
     public int growthTime;
 

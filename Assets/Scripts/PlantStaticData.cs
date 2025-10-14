@@ -4,8 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public static class PlantStaticData
 {
-    public static List<PlantBaseState> PlantStates;
-    public static List<Seed> SeedTypes;
-    public static bool[] PreviouslyWatered;
-    public static int[] GrowthCountdowns;
+    public static List<PotData> Pots = new List<PotData>();
+}
+
+public class PotData
+{
+    public string StateID;
+    public string SeedID;
+    public bool IsWatered;
+    public int GrowthCountdown;
 }

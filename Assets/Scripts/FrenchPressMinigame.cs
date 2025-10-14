@@ -6,8 +6,8 @@ public class FrenchPressMinigame : MonoBehaviour
     [SerializeField] private BrewingStationManager _brewingStationManager;
     public bool FullyPressed = false;
     [SerializeField] RectTransform _presser;
-    private Vector2 _initialPosition = new Vector2(0, 175f);
-    private Vector2 _finishedPosition = new Vector2(0, -50f);
+    private Vector2 _initialPosition = new Vector2(-10f, 200f);
+    private Vector2 _finishedPosition = new Vector2(-10f, 20f);
     Coroutine _pressCoroutine;
 
     private void OnEnable()

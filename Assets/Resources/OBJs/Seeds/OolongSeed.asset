@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: OolongSeed
   m_EditorClassIdentifier: Assembly-CSharp::Seed
   seedName: Oolong Tea Seed
-  seedIcon: {fileID: 0}
-  growthTime: 0
+  seedDescription: Plant seed that grows oolong tea leaves
+  ID: Oolong
+  seedIcon: {fileID: 5968185805358424574, guid: 84c98f150f919aa4db0ae1f5fbaf7e29, type: 3}
+  growthTime: 2
   GrowingPhaseOne: {fileID: 0}
   GrowingPhaseTwo: {fileID: 0}
   GrowingPhaseThree: {fileID: 0}

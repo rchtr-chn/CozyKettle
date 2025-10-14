@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cellphone
+  - BlackSeed
+  - GreenSeed
+  - MatchaSeed
+  - OolongSeed
   layers:
   - Default
   - TransparentFX

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: BlackSeed
   m_EditorClassIdentifier: Assembly-CSharp::Seed
   seedName: Black Tea Seed
-  seedIcon: {fileID: 0}
-  growthTime: 0
+  seedDescription: Plant seed that grows black tea leaves
+  ID: Black
+  seedIcon: {fileID: 1187214545572289823, guid: 3ddd726172ea45147b092555b442f164, type: 3}
+  growthTime: 2
   GrowingPhaseOne: {fileID: 0}
   GrowingPhaseTwo: {fileID: 0}
   GrowingPhaseThree: {fileID: 0}

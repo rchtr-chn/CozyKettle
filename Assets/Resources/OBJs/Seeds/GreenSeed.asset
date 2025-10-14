@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: GreenSeed
   m_EditorClassIdentifier: Assembly-CSharp::Seed
   seedName: Green Tea Seed
-  seedIcon: {fileID: 0}
-  growthTime: 0
+  seedDescription: Plant seed that grows green tea leaves
+  ID: Green
+  seedIcon: {fileID: -959612791597208501, guid: 7f3df7068957f0742a75ac4436bc96a5, type: 3}
+  growthTime: 2
   GrowingPhaseOne: {fileID: 0}
   GrowingPhaseTwo: {fileID: 0}
   GrowingPhaseThree: {fileID: 0}

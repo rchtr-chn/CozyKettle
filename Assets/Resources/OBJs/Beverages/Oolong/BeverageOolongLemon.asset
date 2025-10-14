@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb501a75b2f9ea14a8778a931fa38ceb, type: 3}
   m_Name: BeverageOolongLemon
   m_EditorClassIdentifier: 
-  BeverageName: 
+  BeverageName: Oolong Lemon Tea
   BeverageDescription: 
   BeverageSprite: {fileID: 0}
   BeverageTasteProfile: 0200000006000000

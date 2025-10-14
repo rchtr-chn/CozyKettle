@@ -3,46 +3,56 @@ using UnityEngine;
 
 public class GardenManager : MonoBehaviour
 {
+    [SerializeField] private SeedDatabase _seedDatabase; // assign in Inspector
     [SerializeField] private List<PlantStateManager> _pots;
 
     private void Start()
     {
-        if(PlantStaticData.PlantStates == null)
+        _seedDatabase.Initialize(); // build dictionary
+
+        if (PlantStaticData.Pots == null || PlantStaticData.Pots.Count == 0)
         {
+            // First-time init
             foreach (var pot in _pots)
             {
-                pot.CurrentState = pot.InitialState;
+                pot.CurrentState = new PlantInitialState();
                 pot.CurrentState.EnterState(pot);
             }
         }
         else
         {
-            //initialize pots with existing static data
+            // Restore from static data
             for (int i = 0; i < _pots.Count; i++)
             {
-                _pots[i].CurrentState = PlantStaticData.PlantStates[i];
-                _pots[i].SeedData = PlantStaticData.SeedTypes[i];
-                _pots[i].IsWatered = PlantStaticData.PreviouslyWatered[i];
-                _pots[i].GrowthCountdown = PlantStaticData.GrowthCountdowns[i];
+                var data = PlantStaticData.Pots[i];
+
+                // Restore state
+                _pots[i].CurrentState = PlantStateDictionary.GetStateByID(data.StateID);
+
+                // Restore seed
+                _pots[i].SeedData = string.IsNullOrEmpty(data.SeedID) ? null : _seedDatabase.GetSeed(data.SeedID);
+
+                _pots[i].IsWatered = data.IsWatered;
+                _pots[i].GrowthCountdown = data.GrowthCountdown;
 
                 _pots[i].CurrentState.EnterState(_pots[i]);
             }
         }
     }
 
-    public void SaveGardenData()
+    public void SavePotData()
     {
-        PlantStaticData.PlantStates = new List<PlantBaseState>();
-        PlantStaticData.SeedTypes = new List<Seed>();
-        PlantStaticData.PreviouslyWatered = new bool[_pots.Count];
-        PlantStaticData.GrowthCountdowns = new int[_pots.Count];
+        PlantStaticData.Pots = new List<PotData>();
 
-        for (int i = 0; i < _pots.Count; i++)
+        foreach (var pot in _pots)
         {
-            PlantStaticData.PlantStates.Add(_pots[i].CurrentState);
-            PlantStaticData.SeedTypes.Add(_pots[i].SeedData);
-            PlantStaticData.PreviouslyWatered[i] = _pots[i].IsWatered;
-            PlantStaticData.GrowthCountdowns[i] = _pots[i].GrowthCountdown;
+            PlantStaticData.Pots.Add(new PotData
+            {
+                StateID = pot.CurrentState.ID,
+                SeedID = pot.SeedData != null ? pot.SeedData.ID : null,
+                IsWatered = pot.IsWatered,
+                GrowthCountdown = pot.GrowthCountdown
+            });
         }
     }
 }

@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlantReadyState : PlantBaseState
 {
+    public PlantReadyState()
+    {
+        ID = "Ready";
+    }
     public override void EnterState(PlantStateManager plant)
     {
         

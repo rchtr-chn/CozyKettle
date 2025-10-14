@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlantGrowingState : PlantBaseState
 {
+    public PlantGrowingState()
+    {
+        ID = "Growing";
+    }
     public override void EnterState(PlantStateManager plant)
     {
         //checks if plant is watered yesterday

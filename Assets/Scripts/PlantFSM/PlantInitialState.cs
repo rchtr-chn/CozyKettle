@@ -2,20 +2,25 @@ using UnityEngine;
 
 public class PlantInitialState : PlantBaseState
 {
+    public PlantInitialState()
+    {
+        ID = "Initial";
+    }
     public override void EnterState(PlantStateManager plant)
     {
-        throw new System.NotImplementedException();
+        if(plant.SeedData != null && plant.IsWatered)
+        {
+            plant.SwitchState(plant.GrowingState);
+        }
     }
     public override void UpdateState(PlantStateManager plant)
     {
         if(plant.SeedData != null)
         {
-            plant.GrowthCountdown = plant.SeedData.growthTime;
             if(plant.IsWatered)
             {
-                plant.IsWatered = true;
                 plant.CanBeWatered = false;
-                plant.SwitchState(plant.GrowingState);
+                plant.GrowthCountdown = plant.SeedData.growthTime;
             }
         }
     }
