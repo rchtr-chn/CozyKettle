@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class Kettle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public Vector3 DefaultPosition;
     public Vector3 LatestLegalPosition;
 
     [SerializeField] private Dispenser _dispenser;
@@ -15,7 +16,11 @@ public class Kettle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         _canvas = GetComponentInParent<Canvas>();
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
-        LatestLegalPosition = _rectTransform.anchoredPosition;
+    }
+
+    private void Start()
+    {
+        DefaultPosition = LatestLegalPosition = _rectTransform.anchoredPosition;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

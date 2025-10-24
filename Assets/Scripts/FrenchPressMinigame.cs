@@ -5,25 +5,41 @@ public class FrenchPressMinigame : MonoBehaviour
 {
     [SerializeField] private BrewingStationManager _brewingStationManager;
     public bool FullyPressed = false;
-    [SerializeField] RectTransform _presser;
-    private Vector2 _initialPosition = new Vector2(-10f, 200f);
-    private Vector2 _finishedPosition = new Vector2(-10f, 20f);
+    public RectTransform PresserRT;
+    public RectTransform FillingRT;
+    private Vector2 _presserInitPos = new Vector2(0, 200f);
+    private Vector2 _fillingInitPos = new Vector2(0, -225f);
+    private Vector2 _pressedEndPos = new Vector2(0, -25f);
+    public Vector2 _overlapPos = new Vector2(0, 75f);
+
     Coroutine _pressCoroutine;
 
     private void OnEnable()
     {
-        _presser.anchoredPosition = _initialPosition;
+        PresserRT.anchoredPosition = _presserInitPos;
+        FillingRT.anchoredPosition = _fillingInitPos;
         FullyPressed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_presser.anchoredPosition.y < _initialPosition.y && !FullyPressed)
+        if (PresserRT.anchoredPosition.y < _presserInitPos.y && !FullyPressed)
         {
-            _presser.anchoredPosition += new Vector2(0, 5f) * Time.deltaTime;
+            PresserRT.anchoredPosition += new Vector2(0, 5f) * Time.deltaTime;
+
+            if(PresserRT.anchoredPosition.y < _overlapPos.y)
+            {
+                PresserRT.SetAsFirstSibling();
+                FillingRT.anchoredPosition -= new Vector2(0, 5f) * Time.deltaTime;
+
+            }
+            else
+            {
+                PresserRT.SetAsLastSibling();
+            }
         }
-        if (_presser.anchoredPosition.y <= _finishedPosition.y && !FullyPressed)
+        if (PresserRT.anchoredPosition.y <= _pressedEndPos.y && !FullyPressed)
         {
             FullyPressed = true;
             if (_pressCoroutine == null)
@@ -31,6 +47,9 @@ public class FrenchPressMinigame : MonoBehaviour
                 _pressCoroutine = StartCoroutine(WaitAndEndMinigame());
             }
         }
+
+        float presserClamp = Mathf.Clamp(PresserRT.anchoredPosition.y, _pressedEndPos.y, _presserInitPos.y);
+        PresserRT.anchoredPosition = new Vector2(PresserRT.anchoredPosition.x, presserClamp);
     }
 
     IEnumerator WaitAndEndMinigame()
@@ -39,6 +58,6 @@ public class FrenchPressMinigame : MonoBehaviour
         _pressCoroutine = null;
         this.gameObject.SetActive(false);
 
-        _brewingStationManager.CreateBeverage();
+        _brewingStationManager.StartPourToCupMinigame();
     }
 }

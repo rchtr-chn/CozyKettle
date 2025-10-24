@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
+    private bool _shopIsOpen = true;
+
+    [Header("Customer Settings")]
+    [SerializeField] private SummaryManager _summaryManager; // Assign in inspector
     public GameObject CustomerPrefab;
     public RectTransform CustomerEntrancePos;
     public RectTransform CustomerExitPos;
     public List<GameObject> CustomerSeats;
     private float speed = 2f;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite[] _customerDefaultSprites;
+    [SerializeField] private Sprite[] _customerUnsatisfiedSprites;
+
+    [Header("Beverages")]
     [SerializeField] private Beverage[] _availableBeverages;
     protected static Dictionary<Beverage, string> _beverageToRequestText;
+
+    Coroutine _customerCoroutine;
 
     private void Awake()
     {
@@ -24,13 +35,13 @@ public class CustomerManager : MonoBehaviour
     void Start()
     {
         _beverageToRequestText = new() {
-            { _availableBeverages[0], "Bring me a strong, robust cup—bold and full-bodied, the kind that warms you right up" }, // black tea
-            { _availableBeverages[1], "Bring me something deep and robust, but sweetened with a comforting warmth." }, // black tea + honey
+            { _availableBeverages[0], "Bring me a strong, robust cup—bold, the kind that warms you right up" }, // black tea
+            { _availableBeverages[1], "Bring me something deep and bold, but sweetened with a comforting warmth." }, // black tea + honey
             { _availableBeverages[2], "I’d like something bold but with a bright, citrus edge to cut through the heaviness." }, // black tea + lemon
             { _availableBeverages[3], "I’m craving a strong, bold cup that’s softened by a rich, creamy finish." }, // black tea + milk
-            { _availableBeverages[4], "I’d like something light and refreshing, with a gentle grassy note that feels pure and clean." }, // green tea
+            { _availableBeverages[4], "I’d like something light and refreshing, with subtle grassy note that feels pure and clean." }, // green tea
             { _availableBeverages[5], "I want something refreshing yet sweet, like a spring breeze with a golden sweetness." }, // green tea + honey
-            { _availableBeverages[6], "Give me something sharp and zesty, but still clean and light—like a splash of sunshine." }, // green tea + lemon
+            { _availableBeverages[6], "Give me something sharp, refreshing, and zesty, but still clean and light—like a splash of sunshine." }, // green tea + lemon
             { _availableBeverages[7], "Something smooth and calming, a little grassy but mellowed out with a creamy touch." }, // green tea + milk
             { _availableBeverages[8], "Give me something earthy and energizing, with that deep, grassy kick of pure matcha." }, // matcha tea
             { _availableBeverages[9], "Bring me something earthy but sweet, like a meadow dusted with golden nectar." }, // matcha tea + honey
@@ -42,29 +53,49 @@ public class CustomerManager : MonoBehaviour
             { _availableBeverages[15], "I want a drink that’s smooth and floral, but grounded with a silky creaminess." }, // oolong tea + milk
         };
 
-        GetCustomers();
+        //StartCoroutine(GetCustomer(CustomerSeats[Random.Range(0, CustomerSeats.Count)].transform, 0));
     }
 
-    void GetCustomers()
+    private void Update()
     {
-        foreach (GameObject seat in CustomerSeats)
+        if(_shopIsOpen && _customerCoroutine == null)
         {
-            if (seat.transform.childCount == 0)
+            Transform seat = CheckForAvailableSeats();
+            if (seat != null)
             {
-                // Seat is empty, spawn a customer
-                GameObject customer = Instantiate(CustomerPrefab, CustomerEntrancePos.position, Quaternion.identity, seat.transform);
-
-                // Assign a random beverage request
-                Customer custScript = customer.GetComponent<Customer>();
-                custScript.CustomerManager = this;
-                Beverage beverage = GetRequest(_availableBeverages);
-                custScript.BeverageRequested = beverage;
-                custScript.SpeechBubbleText = _beverageToRequestText[beverage];
-
-                float randSpeed = Random.Range(1f, 5f);
-                StartCoroutine(MoveToSeat(customer, seat, randSpeed));
+                seat.SetAsFirstSibling();
+                float randDelay = Random.Range(3f, 7f);
+                _customerCoroutine = StartCoroutine(GetCustomer(seat, randDelay));
             }
         }
+    }
+
+    IEnumerator GetCustomer(Transform seat, float delay)
+    {
+        float timer = 0f;
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        GameObject customer = Instantiate(CustomerPrefab, CustomerEntrancePos.position, Quaternion.identity, seat.transform);
+
+        // Assign a random beverage request
+        Customer custScript = customer.GetComponent<Customer>();
+        custScript.CustomerManager = this;
+        Beverage beverage = GetRequest(_availableBeverages);
+        custScript.BeverageRequested = beverage;
+        custScript.SpeechBubbleText = _beverageToRequestText[beverage];
+
+        ApplySprites(custScript);
+
+        // Assing summary manager for recording
+        custScript.SummaryManager = _summaryManager;
+
+        float randSpeed = Random.Range(1f, 5f);
+        _customerCoroutine = null;
+        StartCoroutine(MoveToSeat(customer.transform, seat, randSpeed));
     }
     Beverage GetRequest(Beverage[] availableBevs)
     {
@@ -72,11 +103,11 @@ public class CustomerManager : MonoBehaviour
         return availableBevs[rand];
     }
 
-    IEnumerator MoveToSeat(GameObject customer, GameObject target, float speed)
+    IEnumerator MoveToSeat(Transform customer, Transform target, float speed)
     {
         while (customer.transform.position != target.transform.position)
         {
-            customer.transform.position = Vector3.MoveTowards(customer.transform.position, target.transform.position, speed * 500f * Time.deltaTime);
+            customer.transform.position = Vector3.MoveTowards(customer.position, target.position, speed * 250f * Time.deltaTime);
             yield return null;
         }
 
@@ -95,8 +126,50 @@ public class CustomerManager : MonoBehaviour
             yield return null;
         }
         Destroy(customer);
-        GetCustomers();
         yield return null;
     }
 
+    void ApplySprites(Customer cust)
+    {
+        int randIndex = Random.Range(0, _customerDefaultSprites.Length);
+        cust.DefaultSprite = _customerDefaultSprites[randIndex];
+        cust.UnsatisfiedSprite = _customerUnsatisfiedSprites[randIndex];
+
+        cust.CustomerImage.sprite = cust.DefaultSprite;
+    }
+
+    Transform CheckForAvailableSeats()
+    {
+        foreach (GameObject seat in CustomerSeats)
+        {
+            if (seat.transform.childCount == 0)
+            {
+                return seat.transform;
+            }
+        }
+        return null;
+    }
+
+    public bool AllSeatsEmpty()
+    {
+        foreach (GameObject seat in CustomerSeats)
+        {
+            if (seat.transform.childCount > 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void StopIncomingCustomers()
+    {
+        _shopIsOpen = false;
+
+        if(_customerCoroutine != null)
+        {
+            StopCoroutine(_customerCoroutine);
+            _customerCoroutine = null;
+        }
+    }
 }

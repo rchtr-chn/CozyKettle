@@ -1,29 +1,68 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class BrewingStationManager : MonoBehaviour
 {
+    [Header("Beverage Selection Data")]
     [SerializeField] private List<Herb> _herbs = new List<Herb>();
+    [SerializeField] private List<Herb> _instantHerbs = new List<Herb>();
     [SerializeField] private List<AddOn> _addOns = new List<AddOn>();
     [SerializeField] private List<Beverage> _beverages = new List<Beverage>();
     public Herb SelectedHerb;
     public AddOn SelectedAddOn;
     public Beverage SelectedBeverage;
 
+    [Header("Minigame References")] // Assign these in inspector
     [SerializeField] private GameObject _boilingWaterMinigameGO;
     [SerializeField] private GameObject _frenchPressMinigameGO;
+    [SerializeField] private GameObject _matchaWhiskingMinigameGO;
+    [SerializeField] private GameObject _pourToCupMinigameGO;
 
+    [Header("Beverage Creation References")] // Assign these in inspector
     [SerializeField] private GameObject _beveragePrefab;
     [SerializeField] private RectTransform _beverageSpawnPos;
     [SerializeField] private Transform _beverageParent;
 
-    [SerializeField] private GameObject _cutsceneManager;
-    [SerializeField] private GameObject _brewingCutscene;
+    [Header("Script References")] // Assign these in inspector
+    [SerializeField] BrewingInventoryManager _brewingInventoryManager;
+    [SerializeField] BrewingPOVScript _brewingPOVScript;
 
-    public bool lockPOV = false;
+    [Header("ItemChoices")]
+    [SerializeField] private Button[] itemChoices = new Button[7]; // assign in inspector
+    private Button LastPickedAddon;
+
+    public static Dictionary<ItemSO, BrewingStaticData.Items> SODictionary;
 
     private void Awake()
+    {
+        InitSO();
+    }
+
+    private void Start()
+    {
+        SODictionary = new Dictionary<ItemSO, BrewingStaticData.Items>()
+        {
+            { _herbs[0], BrewingStaticData.Items.BlackHerb },
+            { _herbs[1], BrewingStaticData.Items.GreenHerb },
+            { _herbs[2], BrewingStaticData.Items.MatchaHerb },
+            { _herbs[3], BrewingStaticData.Items.OolongHerb },
+            { _addOns[1], BrewingStaticData.Items.Lemon },
+            { _addOns[0], BrewingStaticData.Items.Honey },
+            { _addOns[2], BrewingStaticData.Items.Milk },
+            { _instantHerbs[0], BrewingStaticData.Items.InstantBlack },
+            { _instantHerbs[1], BrewingStaticData.Items.InstantGreen },
+            { _instantHerbs[2], BrewingStaticData.Items.InstantMatcha },
+            { _instantHerbs[3], BrewingStaticData.Items.InstantOolong }
+        };
+
+        CheckMaterialAvailability();
+    }
+
+    void InitSO()
     {
         if (_beverages != null)
         {
@@ -35,6 +74,11 @@ public class BrewingStationManager : MonoBehaviour
             Herb[] load = Resources.LoadAll<Herb>("OBJs/Herbs");
             _herbs = new List<Herb>(load);
         }
+        if (_instantHerbs != null)
+        {
+            Herb[] load = Resources.LoadAll<Herb>("OBJs/InstantHerbs");
+            _instantHerbs = new List<Herb>(load);
+        }
         if (_addOns != null)
         {
             AddOn[] load = Resources.LoadAll<AddOn>("OBJs/AddOns");
@@ -42,14 +86,35 @@ public class BrewingStationManager : MonoBehaviour
         }
     }
 
-    public void InvertInteractability(Button[] buttons)
+    void CheckMaterialAvailability()
     {
-        foreach (var i in buttons)
+        if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.BlackHerb) <= 0 && BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantBlack) <= 0)
         {
-            if (i != null)
-            {
-                i.interactable = !i.interactable;
-            }
+            itemChoices[0].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.GreenHerb) <= 0 && BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantGreen) <= 0)
+        {
+            itemChoices[1].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.MatchaHerb) <= 0 && BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantMatcha) <= 0)
+        {
+            itemChoices[2].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.OolongHerb) <= 0 && BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantOolong) <= 0)
+        {
+            itemChoices[3].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Lemon) <= 0)
+        {
+            itemChoices[4].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Honey) <= 0)
+        {
+            itemChoices[5].interactable = false;
+        }
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Milk) <= 0)
+        {
+            itemChoices[6].interactable = false;
         }
     }
 
@@ -58,10 +123,21 @@ public class BrewingStationManager : MonoBehaviour
         _boilingWaterMinigameGO.SetActive(true);
     }
 
-    public void StartFrenchPressMinigame()
+    void StartFrenchPressMinigame()
     {
         _frenchPressMinigameGO.SetActive(true);
     }
+
+    void StartMatchaWhiskingMinigame()
+    {
+        _matchaWhiskingMinigameGO.SetActive(true);
+    }
+
+    public void StartPourToCupMinigame()
+    {
+        _pourToCupMinigameGO.SetActive(true);
+    }
+
     public void CreateBeverage()
     {
         GameObject beverage = Instantiate(_beveragePrefab, _beverageSpawnPos);
@@ -73,11 +149,30 @@ public class BrewingStationManager : MonoBehaviour
                 SelectedAddOn = _addOns[_addOns.Count - 1]; //default to last add-on (none) if no add-on selected
             }
 
-            SelectedBeverage = GetBeverageResult(SelectedHerb.HerbTasteProfile, SelectedAddOn.AddOnTasteProfile);
+            SelectedBeverage = GetBeverageResult(SelectedHerb.herbTasteProfile, SelectedAddOn.AddOnTasteProfile);
+            if(SelectedHerb.IsInstant)
+            {
+                SelectedBeverage.BeverageCost *= 0.8f;
+            }
             beverageDisplay.BeverageSO = SelectedBeverage;
             beverageDisplay.UpdateBeverageInfo();
 
+            DecrementItems(SelectedHerb, SelectedAddOn);
+            BrewingStaticData.DisplayAllItemQuantities();
+            _brewingInventoryManager.UpdateQtyVisuals();
+
             ResetBrewingSequence();
+        }
+    }
+    private void DecrementItems(Herb selectedHerb, AddOn selectedAddOn)
+    {
+        BrewingStaticData.Items usedHerb = SODictionary[SelectedHerb];
+        BrewingStaticData.SubtractItemQuantity(usedHerb, 1);
+
+        if (SelectedAddOn.AddOnTasteProfile != TasteProfile.None)
+        {
+            BrewingStaticData.Items usedAddOn = SODictionary[SelectedAddOn];
+            BrewingStaticData.SubtractItemQuantity(usedAddOn, 1);
         }
     }
 
@@ -95,119 +190,229 @@ public class BrewingStationManager : MonoBehaviour
 
     void ResetBrewingSequence()
     {
+        ResetItemSelections();
+        _brewingPOVScript.SetLockPOV(false); // Unlock POV
+    }
+
+    void ResetItemSelections()
+    {
         SelectedHerb = null;
         SelectedAddOn = null;
-        lockPOV = false;
+        foreach (var btn in itemChoices)
+        {
+            btn.interactable = true;
+            Image img = btn.GetComponent<Image>();
+            DimSelectedAddOn(img);
+        }
     }
-
-    public void StartBrewingSequence()
-    {
-        _cutsceneManager.SetActive(true);
-        _brewingCutscene.SetActive(true);
-    }
-
 
     //-- Beverage Selection Methods --//
 
     public void SelectBlack()
     {
-        foreach (var herb in _herbs)
+        if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantBlack) > 0)
         {
-            if (herb.HerbTasteProfile == TasteProfile.Bold)
+            foreach (var herb in _instantHerbs)
             {
-                SelectedHerb = herb;
-                break;
+                if (herb.herbTasteProfile == TasteProfile.Bold)
+                {
+                    SelectedHerb = herb;
+                    return;
+                }
+            }
+        }
+        else if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.BlackHerb) > 0)
+        {
+            foreach (var herb in _herbs)
+            {
+                if (herb.herbTasteProfile == TasteProfile.Bold)
+                {
+                    SelectedHerb = herb;
+                    break;
+                }
             }
         }
     }
     public void SelectGreen()
     {
-        foreach (var herb in _herbs)
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantGreen) > 0)
         {
-            if (herb.HerbTasteProfile == TasteProfile.Refreshing)
+            foreach (var herb in _instantHerbs)
             {
-                SelectedHerb = herb;
-                break;
+                if (herb.herbTasteProfile == TasteProfile.Refreshing)
+                {
+                    SelectedHerb = herb;
+                    return;
+                }
+            }
+        }
+        else if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.GreenHerb) > 0)
+        {
+            foreach (var herb in _herbs)
+            {
+                if (herb.herbTasteProfile == TasteProfile.Refreshing)
+                {
+                    SelectedHerb = herb;
+                    break;
+                }
             }
         }
     }
     public void SelectMatcha()
     {
-        foreach (var herb in _herbs)
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantMatcha) > 0)
         {
-            if (herb.HerbTasteProfile == TasteProfile.Grassy)
+            foreach (var herb in _instantHerbs)
             {
-                SelectedHerb = herb;
-                break;
+                if (herb.herbTasteProfile == TasteProfile.Grassy)
+                {
+                    SelectedHerb = herb;
+                    return;
+                }
+            }
+        }
+        else if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.MatchaHerb) > 0)
+        {
+            foreach (var herb in _herbs)
+            {
+                if (herb.herbTasteProfile == TasteProfile.Grassy)
+                {
+                    SelectedHerb = herb;
+                    break;
+                }
             }
         }
     }
     public void SelectOolong()
     {
-        foreach (var herb in _herbs)
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantOolong) > 0)
         {
-            if (herb.HerbTasteProfile == TasteProfile.Floral)
+            foreach (var herb in _instantHerbs)
             {
-                SelectedHerb = herb;
-                break;
+                if (herb.herbTasteProfile == TasteProfile.Floral)
+                {
+                    SelectedHerb = herb;
+                    return;
+                }
+            }
+        }
+        else if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.OolongHerb) > 0)
+        {
+            foreach (var herb in _herbs)
+            {
+                if (herb.herbTasteProfile == TasteProfile.Floral)
+                {
+                    SelectedHerb = herb;
+                    break;
+                }
             }
         }
     }
 
     public void SelectLemon()
     {
-        if(SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Citrusy)
+        if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Lemon) > 0)
         {
-            foreach (var addOn in _addOns)
+            if (SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Citrusy)
             {
-                if (addOn.AddOnTasteProfile == TasteProfile.Citrusy)
+                foreach (var addOn in _addOns)
                 {
-                    SelectedAddOn = addOn;
-                    break;
+                    if (addOn.AddOnTasteProfile == TasteProfile.Citrusy)
+                    {
+                        SelectedAddOn = addOn;
+                        break;
+                    }
                 }
             }
-        }
-        else if(SelectedAddOn.AddOnTasteProfile == TasteProfile.Citrusy)
-        {
-            SelectedAddOn = null;
+            else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Citrusy)
+            {
+                SelectedAddOn = null;
+            }
         }
     }
 
     public void SelectHoney()
     {
-        if (SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Sweet)
+        if (BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Honey) > 0)
         {
-            foreach (var addOn in _addOns)
+            if (SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Sweet)
             {
-                if (addOn.AddOnTasteProfile == TasteProfile.Sweet)
+                foreach (var addOn in _addOns)
                 {
-                    SelectedAddOn = addOn;
-                    break;
+                    if (addOn.AddOnTasteProfile == TasteProfile.Sweet)
+                    {
+                        SelectedAddOn = addOn;
+                        break;
+                    }
                 }
             }
-        }
-        else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Sweet)
-        {
-            SelectedAddOn = null;
+            else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Sweet)
+            {
+                SelectedAddOn = null;
+            }
         }
     }
 
     public void SelectMilk()
     {
-        if (SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Creamy)
+        if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.Milk) > 0)
         {
-            foreach (var addOn in _addOns)
+            if (SelectedAddOn == null || SelectedAddOn.AddOnTasteProfile != TasteProfile.Creamy)
             {
-                if (addOn.AddOnTasteProfile == TasteProfile.Creamy)
+                foreach (var addOn in _addOns)
                 {
-                    SelectedAddOn = addOn;
-                    break;
+                    if (addOn.AddOnTasteProfile == TasteProfile.Creamy)
+                    {
+                        SelectedAddOn = addOn;
+                        break;
+                    }
                 }
             }
+            else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Creamy)
+            {
+                SelectedAddOn = null;
+            }
         }
-        else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Creamy)
+    }
+
+    public void DimSelectedAddOn(Image img)
+    {
+        if (SelectedAddOn != null)
         {
-            SelectedAddOn = null;
+            Color cb = img.color;
+            cb = new Color(0.5f, 0.5f, 0.5f);
+            img.color = cb;
+        }
+        else
+        {
+            Color cb = img.color;
+            cb = new Color(1f, 1f, 1f);
+            img.color = cb;
+        }
+
+        if (LastPickedAddon == null)
+        {
+            LastPickedAddon = img.GetComponent<Button>();
+        }
+        else if (LastPickedAddon != img.GetComponent<Button>())
+        {
+            Image lastImg = LastPickedAddon.GetComponent<Image>();
+            Color cl = lastImg.color;
+            cl = new Color(1f, 1f, 1f);
+            lastImg.color = cl;
+            LastPickedAddon = img.GetComponent<Button>();
+        }
+    }
+
+    public void StartMinigameSequences()
+    {
+        if (SelectedHerb.herbTasteProfile == TasteProfile.Grassy)
+        {
+            StartMatchaWhiskingMinigame();
+        }
+        else
+        {
+            StartFrenchPressMinigame();
         }
     }
 }

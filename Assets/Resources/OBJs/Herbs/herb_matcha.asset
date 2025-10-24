@@ -11,8 +11,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c82b072346dc726449e2bc9833d22aa9, type: 3}
   m_Name: herb_matcha
-  m_EditorClassIdentifier: 
-  HerbName: Matcha Powder
-  HerbDescription: 
-  HerbSprite: {fileID: 0}
-  HerbTasteProfile: 3
+  m_EditorClassIdentifier: Assembly-CSharp::Herb
+  itemName: Matcha Powder
+  itemDescription: 
+  itemSprite: {fileID: -8939722390838811025, guid: 2fd72e1175066ee41a3902fcb6800751, type: 3}
+  itemID: MatchaHerb
+  itemType: 0
+  item: 2
+  itemPrice: 250
+  IsInstant: 0
+  herbTasteProfile: 3

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InventorySeedIcon : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
-    [SerializeField] private InventoryManager _inventoryManager; // Assign in inspector
+    [SerializeField] private GardenInventoryManager _inventoryManager; // Assign in inspector
     [SerializeField] private Seed _seedType; // Assign in inspector
     static Dictionary<string, int> seedIndex = new Dictionary<string, int>(); // Seed ID to index mapping
     private Image _slotImage;
@@ -30,13 +30,13 @@ public class InventorySeedIcon : MonoBehaviour, IPointerClickHandler, IDragHandl
 
         _slotImage = GetComponent<Image>();
 
-        if (_seedType.seedIcon != null && _seedType != null)
+        if (_seedType.itemSprite != null && _seedType != null)
         {
-            _slotImage.sprite = _seedType.seedIcon;
+            _slotImage.sprite = _seedType.itemSprite;
         }
         else
         {
-            Debug.LogWarning("Slot Image or Seed Type is not assigned in the inspector." + _seedType.ID);
+            Debug.LogWarning("Slot Image or Seed Type is not assigned in the inspector." + _seedType.itemID);
         }
 
         _parentCanvas = GetComponentInParent<Canvas>();
@@ -47,7 +47,7 @@ public class InventorySeedIcon : MonoBehaviour, IPointerClickHandler, IDragHandl
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        _inventoryManager.DisplayFeatured(_seedType.seedIcon, _seedType.seedName, _seedType.seedDescription);
+        _inventoryManager.DisplayFeatured(_seedType.itemSprite, _seedType.itemName, _seedType.itemDescription);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -69,7 +69,7 @@ public class InventorySeedIcon : MonoBehaviour, IPointerClickHandler, IDragHandl
 
     public Seed GetSeedType()
     {
-        int index = seedIndex.ContainsKey(_seedType.ID) ? seedIndex[_seedType.ID] : -1;
+        int index = seedIndex.ContainsKey(_seedType.itemID) ? seedIndex[_seedType.itemID] : -1;
         _inventoryManager.SeedCounts[index]--;
         _inventoryManager.UpdateTextQuanitity();
         _inventoryManager.CheckQuantityForDim();

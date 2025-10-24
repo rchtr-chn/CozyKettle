@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b5bffd116ed6946b5caefd9982f819, type: 3}
   m_Name: MatchaSeed
   m_EditorClassIdentifier: Assembly-CSharp::Seed
-  seedName: Matcha Tea Seed
-  seedDescription: Plant seed that grows matcha tea leaves
-  ID: Matcha
-  seedIcon: {fileID: -8965472952585827273, guid: 98ff567e49ef8ef44b3e5afa94de311e, type: 3}
+  itemName: Matcha Tea Seed
+  itemDescription: 
+  itemSprite: {fileID: 0}
+  itemID: MatchaSeed
+  itemType: 2
+  item: 13
+  itemPrice: 370
   growthTime: 2
   GrowingPhaseOne: {fileID: 0}
   GrowingPhaseTwo: {fileID: 0}

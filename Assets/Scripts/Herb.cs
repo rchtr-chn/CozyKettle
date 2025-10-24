@@ -1,10 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Herb", menuName = "Items/Herbs")]
-public class Herb : ScriptableObject
+[CreateAssetMenu(fileName = "New Herb", menuName = "Item/Herb")]
+public class Herb : ItemSO
 {
-    public string HerbName;
-    public string HerbDescription;
-    public Sprite HerbSprite;
-    public TasteProfile HerbTasteProfile;
+    public bool IsInstant;
+    public TasteProfile herbTasteProfile;
 }

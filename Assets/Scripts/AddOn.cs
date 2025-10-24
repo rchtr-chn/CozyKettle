@@ -1,10 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New AddOn", menuName = "Items/AddOn")]
-public class AddOn : ScriptableObject
+[CreateAssetMenu(fileName = "New AddOn", menuName = "Item/AddOn")]
+public class AddOn : ItemSO
 {
-    public string AddOnName;
-    public string AddOnDescription;
-    public Sprite AddOnSprite;
     public TasteProfile AddOnTasteProfile;
 }

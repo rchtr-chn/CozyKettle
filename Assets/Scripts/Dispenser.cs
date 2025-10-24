@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class Dispenser : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private BrewingStationManager _brewingStationManager;
-    [SerializeField] private Vector2 _dispenserSlotPos = new Vector2(0f, -110f);
-    [SerializeField] private RectTransform _dispenserRectTransform;
+    [SerializeField] private BrewingStationManager _brewingStationManager; // Assign in inspector if Awake() fails
+    [SerializeField] private Vector2 _dispenserSlotPos = new Vector2(27.5f, -60f);
+    [SerializeField] private RectTransform _dispenserRectTransform; // Assign in inspector
     private Transform _kettleOriginalParent;
+
+    public UnityEvent OnConfirmSelection;
 
     private void Awake()
     {
@@ -26,8 +29,9 @@ public class Dispenser : MonoBehaviour, IDropHandler
                 _kettleOriginalParent = kettleTransform.parent;
 
                 _dispenserRectTransform.SetAsLastSibling();
-                kettle.transform.SetParent(this.transform.parent);
+                kettle.transform.SetParent(this.transform);
                 kettleTransform.anchoredPosition = _dispenserSlotPos;
+                kettle.LatestLegalPosition = _dispenserSlotPos;
             }
             else
             {
@@ -42,14 +46,16 @@ public class Dispenser : MonoBehaviour, IDropHandler
         {
             return;
         }
-        _brewingStationManager.lockPOV = true;
-        if (kettle.transform.parent.name == this.transform.parent.name)
+        if (kettle.transform.parent.name == this.transform.name)
         {
-            _brewingStationManager.StartBrewingSequence();
-        }
+            // Start brewing cutscene sequence and lock POV
+            OnConfirmSelection.Invoke();
 
-        RectTransform kettleTransform = kettle.GetComponent<RectTransform>();
-        kettle.transform.SetParent(_kettleOriginalParent);
-        kettleTransform.anchoredPosition = kettle.LatestLegalPosition;
+            _kettleOriginalParent.SetAsLastSibling();
+
+            RectTransform kettleTransform = kettle.GetComponent<RectTransform>();
+            kettle.transform.SetParent(_kettleOriginalParent);
+            kettleTransform.anchoredPosition = kettle.LatestLegalPosition = kettle.DefaultPosition;
+        }
     }
 }

@@ -6,5 +6,6 @@ public class Beverage : ScriptableObject
     public string BeverageName;
     public string BeverageDescription;
     public Sprite BeverageSprite;
+    public float BeverageCost;
     public TasteProfile[] BeverageTasteProfile;
 }

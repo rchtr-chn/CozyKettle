@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8827485863520397825}
   - component: {fileID: 8896226500630927104}
   - component: {fileID: 5570410200614421338}
+  - component: {fileID: 9037510964264599286}
   m_Layer: 5
   m_Name: ProductName
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fe664560c2efd4843aa5859bcd32caaa, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
@@ -79,6 +80,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Lorem Ipsum Dolor Sit Amet
+--- !u!225 &9037510964264599286
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608052806758426214}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &4215372896298139351
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +103,7 @@ GameObject:
   - component: {fileID: 1319452575023656224}
   - component: {fileID: 7665829132287376166}
   - component: {fileID: 7885115751383029023}
+  - component: {fileID: 3235992816881889905}
   m_Layer: 5
   m_Name: CostText
   m_TagString: Untagged
@@ -145,7 +159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fe664560c2efd4843aa5859bcd32caaa, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
@@ -158,6 +172,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: $00.00
+--- !u!225 &3235992816881889905
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215372896298139351}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &5336004784174212681
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c838e113985839246a1d045ca3b1b4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  SummaryManager: {fileID: 0}
   shopProductSO: {fileID: 0}
   productImage: {fileID: 5642286048192624975}
   productNameText: {fileID: 5570410200614421338}
@@ -264,6 +291,7 @@ GameObject:
   - component: {fileID: 8967240525315367090}
   - component: {fileID: 1300312890013558601}
   - component: {fileID: 5642286048192624975}
+  - component: {fileID: 4820849114399951119}
   m_Layer: 5
   m_Name: ProductIcon
   m_TagString: Untagged
@@ -311,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -328,3 +356,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4820849114399951119
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391615474855121684}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

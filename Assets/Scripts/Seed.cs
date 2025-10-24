@@ -1,12 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Seed", menuName = "Items/Seed")]
-public class Seed : ScriptableObject
+public class Seed : ItemSO
 {
-    public string seedName;
-    public string seedDescription;
-    public string ID;
-    public Sprite seedIcon;
     public int growthTime;
 
     public Sprite GrowingPhaseOne;

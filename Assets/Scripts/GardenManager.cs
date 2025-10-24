@@ -49,7 +49,7 @@ public class GardenManager : MonoBehaviour
             PlantStaticData.Pots.Add(new PotData
             {
                 StateID = pot.CurrentState.ID,
-                SeedID = pot.SeedData != null ? pot.SeedData.ID : null,
+                SeedID = pot.SeedData != null ? pot.SeedData.itemID : null,
                 IsWatered = pot.IsWatered,
                 GrowthCountdown = pot.GrowthCountdown
             });

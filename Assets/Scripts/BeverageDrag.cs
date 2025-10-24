@@ -41,10 +41,6 @@ public class BeverageDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             _beverageTransform.SetParent(_beverageSpawnPos);
             _beverageTransform.anchoredPosition = _lastLegalPosition;
         }
-        else
-        {
-            _canvasGroup.blocksRaycasts = true;
-            // Successfully delivered beverage to customer
-        }
+        _canvasGroup.blocksRaycasts = true;
     }
 }

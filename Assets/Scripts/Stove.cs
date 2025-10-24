@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 
 public class Stove : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private RectTransform _rectTransform;
+    private RectTransform _rectTransform;
     [SerializeField] private BrewingStationManager _brewingStationManager;
-    Vector2 offsetPos = new Vector2(0f, 150f);
+    Vector2 offsetPos = new Vector2(28.5f, 114f);
 
     private void Awake()
     {

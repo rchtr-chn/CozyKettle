@@ -4,7 +4,11 @@ using UnityEngine.EventSystems;
 
 public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
-    [SerializeField] private BrewingPOVScript _brewingPOVScript;
+    [Header("References")]
+    [SerializeField] private BrewingPOVScript _brewingPOVScript; // assign in inspector
+    [SerializeField] CanvasGroup _raycastBlocker; // assign in inspector
+
+    [Header("Positions")]
     [SerializeField] private float _lerpDuration = 0.7f;
     [SerializeField] private Vector2 _defaultPos = new Vector3(720f, -640f);
     [SerializeField] private Vector2 _hoveredPos = new Vector3(720f, -560f);
@@ -19,16 +23,12 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
         {
             _rectTransform = GetComponent<RectTransform>();
         }
-        if (_brewingPOVScript == null)
-        {
-            _brewingPOVScript = FindAnyObjectByType<BrewingPOVScript>();
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _brewingPOVScript.IsOnPhone = true;
-        if(_lerpCoroutine != null)
+        _brewingPOVScript.SetIsOnPhone(true);
+        if (_lerpCoroutine != null)
         {
             StopCoroutine(_lerpCoroutine);
         }
@@ -41,6 +41,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
             StopCoroutine(_lerpCoroutine);
         }
         _lerpCoroutine = StartCoroutine(LerpToPos(_activatedPos));
+        _raycastBlocker.blocksRaycasts = false;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -49,7 +50,8 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
             StopCoroutine(_lerpCoroutine);
         }
         _lerpCoroutine = StartCoroutine(LerpToPos(_defaultPos));
-        _brewingPOVScript.IsOnPhone = false;
+        _brewingPOVScript.SetIsOnPhone(false);
+        _raycastBlocker.blocksRaycasts = true;
     }
 
     IEnumerator LerpToPos(Vector3 target)

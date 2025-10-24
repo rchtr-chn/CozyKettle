@@ -1,21 +1,45 @@
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.Playables;
+using UnityEngine.Events;
+using UnityEngine.Timeline;
 
 public class BrewingCutsceneManager : MonoBehaviour
 {
-    [SerializeField] private VideoPlayer _videoPlayer;
-    [SerializeField] private GameObject _cutsceneDisplay;
-    [SerializeField] private BrewingStationManager _brewingStationManager;
+    [SerializeField] private PlayableDirector _playableDirector;
+
+    [SerializeField] private TimelineAsset _brewingCutsceneTimeline;
+    [SerializeField] private TimelineAsset _SummaryScreenTimeline;
+
+    public UnityEvent OnCutsceneEnd;
 
     private void Start()
     {
-        _videoPlayer.loopPointReached += OnVideoEnd;
     }
 
-    void OnVideoEnd(VideoPlayer vp)
+    public void PlayCutscene()
     {
-        _brewingStationManager.StartFrenchPressMinigame();
-        vp.gameObject.SetActive(false);
-        _cutsceneDisplay.SetActive(false);
+        if(_playableDirector.playableAsset == _brewingCutsceneTimeline)
+        {
+            _playableDirector.stopped += OnVideoEnd;
+        }
+
+        _playableDirector.Play();
+    }
+
+    void OnVideoEnd(PlayableDirector dir)
+    {
+        if(_playableDirector.playableAsset == _brewingCutsceneTimeline)
+        {
+            _playableDirector.stopped -= OnVideoEnd;
+        }
+
+        OnCutsceneEnd.Invoke();
+
+    }
+
+    public void SetCutscene(TimelineAsset timeline)
+    {
+        _playableDirector.playableAsset = timeline;
     }
 }

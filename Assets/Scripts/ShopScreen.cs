@@ -3,20 +3,33 @@ using UnityEngine;
 
 public class ShopScreen : MonoBehaviour
 {
-    [SerializeField] private List<ShopProduct> _products; // assign in inspector if null
+    [SerializeField] private SummaryManager _summaryManager; // assign in inspector
+    [SerializeField] private List<ItemSO> _products; // assign in inspector if null
     [SerializeField] private GameObject _productContentPrefab; // assign in inspector
     [SerializeField] private GameObject _contentParent; // assign in inspector
 
+    private void Awake()
+    {
+        if (_products == null || _products.Count == 0)
+        {
+            _products = new List<ItemSO>(Resources.LoadAll<ItemSO>("OBJs/AddOns"));
+            _products = new List<ItemSO>(Resources.LoadAll<ItemSO>("OBJs/InstantHerbs"));
+            _products = new List<ItemSO>(Resources.LoadAll<ItemSO>("OBJs/Seeds"));
+        }
+    }
+
     void Start()
     {
-        if(_products == null || _products.Count == 0)
-        {
-            _products = new List<ShopProduct>(Resources.LoadAll<ShopProduct>("OBJs/ShopProducts"));
-        }
+        InitializePrefabs();
+    }
+
+    void InitializePrefabs()
+    {
         foreach (var product in _products)
         {
             GameObject productContent = Instantiate(_productContentPrefab, _contentParent.transform);
             ShopProductContent prod = productContent.GetComponent<ShopProductContent>();
+            prod.SummaryManager = _summaryManager;
             prod.shopProductSO = product;
             prod.InitializeVisuals();
         }

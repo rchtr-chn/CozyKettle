@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d6d8e6d6e416842b9b0141e1b5cde8, type: 3}
+  m_Name: addon_honey
+  m_EditorClassIdentifier: 
+  itemName: Honey
+  itemDescription: 
+  itemSprite: {fileID: -3418515021101842755, guid: c0a6da1a55f8bad45b5a90d15411b388, type: 3}
+  itemID: Honey
+  itemType: 1
+  item: 8
+  itemPrice: 18
+  AddOnTasteProfile: 5

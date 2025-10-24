@@ -16,6 +16,11 @@ public class BeverageDisplay : MonoBehaviour
     public void UpdateBeverageInfo()
     {
         _beverageImage.sprite = BeverageSO.BeverageSprite;
+
+        float spriteWidth = BeverageSO.BeverageSprite.rect.width;
+        float spriteHeight = BeverageSO.BeverageSprite.rect.height;
+        _beverageImage.rectTransform.sizeDelta = new Vector2(spriteWidth, spriteHeight) / 6;
+
         _beverageName = BeverageSO.BeverageName;
         _beverageDescription = BeverageSO.BeverageDescription;
     }

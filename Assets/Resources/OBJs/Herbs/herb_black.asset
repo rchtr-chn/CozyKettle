@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82b072346dc726449e2bc9833d22aa9, type: 3}
+  m_Name: herb_black
+  m_EditorClassIdentifier: Assembly-CSharp::Herb
+  itemName: Black Herb
+  itemDescription: 
+  itemSprite: {fileID: 8100152350484565820, guid: bb452c927ea779c428ccf57ebe00982b, type: 3}
+  itemID: BlackHerb
+  itemType: 0
+  itemPrice: 170
+  IsInstant: 0
+  herbTasteProfile: 1

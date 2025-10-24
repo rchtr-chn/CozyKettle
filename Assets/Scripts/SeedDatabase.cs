@@ -13,7 +13,7 @@ public class SeedDatabase : ScriptableObject
         _seedDictionary = new Dictionary<string, Seed>();
         foreach (var seed in Seeds)
         {
-            _seedDictionary[seed.ID] = seed;
+            _seedDictionary[seed.itemID] = seed;
         }
     }
 

@@ -144,8 +144,8 @@ MonoBehaviour:
   m_text: "I\u2019d like something light and refreshing, with a gentle grassy note
     that feels pure and clean."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9c1c3375da96c8445ae7246c9f2cda53, type: 2}
+  m_sharedMaterial: {fileID: 8337106558377916817, guid: 9c1c3375da96c8445ae7246c9f2cda53, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
