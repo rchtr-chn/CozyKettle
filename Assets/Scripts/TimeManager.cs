@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
-    private float _timer = 470f;
+    private float _timer = 0f;
     private readonly float _timerCap = 480f; // 8 minutes in seconds
 
     [Header("ScriptReferences")]
