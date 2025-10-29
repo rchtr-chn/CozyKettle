@@ -120,5 +120,6 @@ public class Customer : MonoBehaviour, IDropHandler
         Text txt = obj.GetComponent<Text>();
         txt.text = "+$" + price.ToString("F2");
         txt.color = Color.green;
+        obj = null;
     }
 }

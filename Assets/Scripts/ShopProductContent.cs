@@ -85,5 +85,6 @@ public class ShopProductContent : MonoBehaviour, IPointerClickHandler
         Text txt = obj.GetComponent<Text>();
         txt.text = "-$" + price.ToString("F2");
         txt.color = Color.red;
+        obj = null;
     }
 }
