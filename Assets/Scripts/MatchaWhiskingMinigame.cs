@@ -16,6 +16,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
     private float _currentProgress = 0f;
     private bool _doneWhisking = false;
     private Coroutine _whiskCoroutine;
+    private bool _whiskSFXPlaying = false;
 
     [Header("UI Elements")]
     [SerializeField] private Image _matchaFoam1; // Assign in inspector
@@ -51,10 +52,20 @@ public class MatchaWhiskingMinigame : MonoBehaviour
 
             if (whiskingSpeed >= _whiskingThreshold)
             {
+                if(!_whiskSFXPlaying)
+                {
+                    SoundManager.Instance.StartChargingSFX(SoundManager.Instance.MatchaWhiskSFX);
+                    _whiskSFXPlaying = true;
+                }
                 _currentProgress += _progressIncreaseRate * Time.deltaTime;
             }
             else
             {
+                if (_whiskSFXPlaying)
+                {
+                    SoundManager.Instance.StopChargingSFX();
+                    _whiskSFXPlaying = false;
+                }
                 _currentProgress -= _progressDecayRate * Time.deltaTime;
             }
             Debug.Log("Whisking Speed: " + whiskingSpeed);
@@ -92,11 +103,15 @@ public class MatchaWhiskingMinigame : MonoBehaviour
 
     private void OnWhiskingComplete()
     {
+        SoundManager.Instance.StopChargingSFX();
         _doneWhisking = true;
         _whiskCoroutine = StartCoroutine(WaitAndEndMinigame());
     }
     IEnumerator WaitAndEndMinigame()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.LockSFX);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.MinigameSuccessSFX);
+
         yield return new WaitForSeconds(2f);
         _whiskCoroutine = null;
         this.gameObject.SetActive(false);

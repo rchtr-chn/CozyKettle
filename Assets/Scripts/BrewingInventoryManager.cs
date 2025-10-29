@@ -78,4 +78,14 @@ public class BrewingInventoryManager : MonoBehaviour
             display.itemQtyText.text = BrewingStaticData.GetItemQuantity(display.itemData).ToString();
         }
     }
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
+    }
+
+    private void OnDisable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
+    }
 }

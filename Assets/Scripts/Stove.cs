@@ -21,6 +21,8 @@ public class Stove : MonoBehaviour, IDropHandler
             {
                 kettle.transform.SetParent(this.transform);
 
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+
                 _rectTransform.SetAsLastSibling();
 
                 RectTransform kettleTransform = kettle.GetComponent<RectTransform>();

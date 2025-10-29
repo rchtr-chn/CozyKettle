@@ -8,6 +8,7 @@ public class BankScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
         UpdateMoneyDisplay();
     }
 
@@ -15,5 +16,10 @@ public class BankScreen : MonoBehaviour
     {
         float currentMoney = PlayerStaticData.GetMoney();
         _moneyText.text = "$ " + currentMoney.ToString("F2");
+    }
+
+    private void OnDisable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
     }
 }

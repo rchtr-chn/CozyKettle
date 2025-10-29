@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class ShopProductContent : MonoBehaviour, IPointerClickHandler
 {
     public SummaryManager SummaryManager;
+    public GameObject MoneyText;
+    public Transform MoneyGroup;
     public ItemSO shopProductSO;
     [SerializeField] private Image productImage; // assign in inspector
     [SerializeField] private Text productNameText; // assign in inspector
@@ -41,6 +43,10 @@ public class ShopProductContent : MonoBehaviour, IPointerClickHandler
             float playerMoney = PlayerStaticData.GetMoney();
             if (playerMoney >= shopProductSO.itemPrice)
             {
+                CreateMoneyText(shopProductSO.itemPrice);
+
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.BuyItemSFX);
+
                 PlayerStaticData.SubtractMoney(shopProductSO.itemPrice);
                 if(shopProductSO.itemType == ItemType.InstantHerbs)
                 {
@@ -71,5 +77,13 @@ public class ShopProductContent : MonoBehaviour, IPointerClickHandler
         float height = img.rect.height;
         float scale = Mathf.Min(maxDimension / width, maxDimension / height, 1f);
         productImage.rectTransform.sizeDelta = new Vector2(width * scale, height * scale);
+    }
+
+    private void CreateMoneyText(float price)
+    {
+        GameObject obj = Instantiate(MoneyText, transform.position, Quaternion.identity, MoneyGroup);
+        Text txt = obj.GetComponent<Text>();
+        txt.text = "-$" + price.ToString("F2");
+        txt.color = Color.red;
     }
 }

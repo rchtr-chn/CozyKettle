@@ -10,16 +10,20 @@ public class SoundManager : MonoBehaviour
     public AudioClip BeverageServedSFX;
     public AudioClip CustomerSatisfiedSFX;
     public AudioClip CustomerUnsatisfiedSFX;
+    public AudioClip CashRegisterSFX;
 
     public AudioClip PlantSeedSFX;
     public AudioClip WateringCanSFX;
     public AudioClip HarvestingSFX;
 
+    public AudioClip DispenserBeepSFX;
     public AudioClip PouringTeaSFX;
     public AudioClip FrenchPressSFX;
-    public AudioClip DispenserSFX;
+    public AudioClip WaterPourSFX;
     public AudioClip MatchaWhiskSFX;
     public AudioClip BoilingWaterSFX;
+    public AudioClip MinigameSuccessSFX;
+    public AudioClip LockSFX;
 
     public AudioClip UIClickSFX;
     public AudioClip BuyItemSFX;
@@ -60,5 +64,19 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void StartChargingSFX(AudioClip clip)
+    {
+        SFXSource.clip = clip;
+        SFXSource.loop = true;
+        SFXSource.Play();
+    }
+
+    public void StopChargingSFX()
+    {
+        SFXSource.Stop();
+        SFXSource.loop = false;
+        SFXSource.clip = null;
     }
 }

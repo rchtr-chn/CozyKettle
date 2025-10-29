@@ -54,6 +54,9 @@ public class FrenchPressMinigame : MonoBehaviour
 
     IEnumerator WaitAndEndMinigame()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.LockSFX);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.MinigameSuccessSFX);
+
         yield return new WaitForSeconds(2f);
         _pressCoroutine = null;
         this.gameObject.SetActive(false);

@@ -8,7 +8,9 @@ public class CustomerManager : MonoBehaviour
 
     [Header("Customer Settings")]
     [SerializeField] private SummaryManager _summaryManager; // Assign in inspector
-    public GameObject CustomerPrefab;
+    public GameObject CustomerPrefab; // Assign in inspector
+    public GameObject MoneyText; // Assign in inspector
+    public Transform MoneyGroup; // Assign in inspector
     public RectTransform CustomerEntrancePos;
     public RectTransform CustomerExitPos;
     public List<GameObject> CustomerSeats;
@@ -80,10 +82,13 @@ public class CustomerManager : MonoBehaviour
         }
 
         GameObject customer = Instantiate(CustomerPrefab, CustomerEntrancePos.position, Quaternion.identity, seat.transform);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerArrivalSFX);
 
         // Assign a random beverage request
         Customer custScript = customer.GetComponent<Customer>();
         custScript.CustomerManager = this;
+        custScript.MoneyText = MoneyText;
+        custScript.MoneyGroup = MoneyGroup;
         Beverage beverage = GetRequest(_availableBeverages);
         custScript.BeverageRequested = beverage;
         custScript.SpeechBubbleText = _beverageToRequestText[beverage];

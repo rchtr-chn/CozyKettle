@@ -7,6 +7,8 @@ public class ShopScreen : MonoBehaviour
     [SerializeField] private List<ItemSO> _products; // assign in inspector if null
     [SerializeField] private GameObject _productContentPrefab; // assign in inspector
     [SerializeField] private GameObject _contentParent; // assign in inspector
+    [SerializeField] private GameObject _moneyText; // assign in inspector
+    [SerializeField] private Transform _moneyGroup; // assign in inspector
 
     private void Awake()
     {
@@ -30,8 +32,20 @@ public class ShopScreen : MonoBehaviour
             GameObject productContent = Instantiate(_productContentPrefab, _contentParent.transform);
             ShopProductContent prod = productContent.GetComponent<ShopProductContent>();
             prod.SummaryManager = _summaryManager;
+            prod.MoneyText = _moneyText;
+            prod.MoneyGroup = _moneyGroup;
             prod.shopProductSO = product;
             prod.InitializeVisuals();
         }
+    }
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
+    }
+
+    private void OnDisable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.PhoneClickSFX);
     }
 }

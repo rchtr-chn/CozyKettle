@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class Dispenser : MonoBehaviour, IDropHandler
 {
     [SerializeField] private BrewingStationManager _brewingStationManager; // Assign in inspector if Awake() fails
+    [SerializeField] private BrewingCutsceneManager _brewingCutsceneManager; // Assign in inspector
     [SerializeField] private Vector2 _dispenserSlotPos = new Vector2(27.5f, -60f);
     [SerializeField] private RectTransform _dispenserRectTransform; // Assign in inspector
     private Transform _kettleOriginalParent;
@@ -28,6 +29,8 @@ public class Dispenser : MonoBehaviour, IDropHandler
             {
                 _kettleOriginalParent = kettleTransform.parent;
 
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+
                 _dispenserRectTransform.SetAsLastSibling();
                 kettle.transform.SetParent(this.transform);
                 kettleTransform.anchoredPosition = _dispenserSlotPos;
@@ -48,7 +51,17 @@ public class Dispenser : MonoBehaviour, IDropHandler
         }
         if (kettle.transform.parent.name == this.transform.name)
         {
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.DispenserBeepSFX);
+
             // Start brewing cutscene sequence and lock POV
+            if (_brewingStationManager.SelectedHerb.herbTasteProfile == TasteProfile.Grassy)
+            {
+                _brewingCutsceneManager.SetCutscene(_brewingCutsceneManager.MatchaCutsceneTimeline);
+            }
+            else
+            {
+                _brewingCutsceneManager.SetCutscene(_brewingCutsceneManager.BrewingCutsceneTimeline);
+            }
             OnConfirmSelection.Invoke();
 
             _kettleOriginalParent.SetAsLastSibling();

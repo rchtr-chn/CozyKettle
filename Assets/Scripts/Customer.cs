@@ -12,6 +12,8 @@ public class Customer : MonoBehaviour, IDropHandler
     [SerializeField] private GameObject _speechBubble;
     public string SpeechBubbleText;
     private GameObject _currentSpeechBubble;
+    public GameObject MoneyText;
+    public Transform MoneyGroup;
 
     [Header("Sprites")]
     public Image CustomerImage; // assign in inspector
@@ -40,12 +42,20 @@ public class Customer : MonoBehaviour, IDropHandler
 
             bool isSatisfied = CompareBeverages(BeverageRequested, givenBeverage.BeverageSO);
 
+            CreateMoneyText(finalBeverageCost);
+
             if (givenBeverage != null && isSatisfied)
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerSatisfiedSFX);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.CashRegisterSFX);
+
                 finalBeverageCost *= _satisfiedMultiplier;
             }
             else if(givenBeverage != null && !isSatisfied)
             {
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerUnsatisfiedSFX);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.CashRegisterSFX);
+
                 CustomerImage.sprite = UnsatisfiedSprite;
                 finalBeverageCost *= _unsatisfiedMultiplier;
             }
@@ -102,5 +112,13 @@ public class Customer : MonoBehaviour, IDropHandler
             yield return null;
         }
         transform.position = originalPos;
+    }
+
+    private void CreateMoneyText(float price)
+    {
+        GameObject obj = Instantiate(MoneyText, transform.position, Quaternion.identity, MoneyGroup);
+        Text txt = obj.GetComponent<Text>();
+        txt.text = "+$" + price.ToString("F2");
+        txt.color = Color.green;
     }
 }
