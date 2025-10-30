@@ -46,14 +46,12 @@ public class Customer : MonoBehaviour, IDropHandler
 
             if (givenBeverage != null && isSatisfied)
             {
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerSatisfiedSFX);
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.CashRegisterSFX);
 
                 finalBeverageCost *= _satisfiedMultiplier;
             }
             else if(givenBeverage != null && !isSatisfied)
             {
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerUnsatisfiedSFX);
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.CashRegisterSFX);
 
                 CustomerImage.sprite = UnsatisfiedSprite;

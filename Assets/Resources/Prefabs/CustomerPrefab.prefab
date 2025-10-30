@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: -16}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &473166357312940085
@@ -92,6 +92,9 @@ MonoBehaviour:
   BeverageRequested: {fileID: 0}
   _speechBubble: {fileID: 1334073915454536558, guid: a2a7cda2e7a2e7e4080a4f3a4c07a378, type: 3}
   SpeechBubbleText: 
+  MoneyText: {fileID: 0}
+  MoneyGroup: {fileID: 0}
   CustomerImage: {fileID: 4318816216746989611}
   DefaultSprite: {fileID: 0}
   UnsatisfiedSprite: {fileID: 0}
+  SummaryManager: {fileID: 0}
