@@ -25,6 +25,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip MinigameSuccessSFX;
     public AudioClip LockSFX;
 
+    public AudioClip OpenBookSFX;
+    public AudioClip PageFlipSFX;
+
     public AudioClip UIClickSFX;
     public AudioClip BuyItemSFX;
     public AudioClip StartOfDaySFX;

@@ -15,6 +15,14 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
      * 3 = Oolong
      */
 
+    [SerializeField] private Color[] _beverageColors; // Assign in inspector
+
+    private Vector2[] _pourerPos = new Vector2[]
+    {
+        new Vector2(300f, 220f),   // non matcha
+        new Vector2(323f, 220f)    // matcha
+    };
+
     private float _maxWidth = 480f;
     private float _maxHeight = 480f;
     private bool _isFull = false;
@@ -58,6 +66,21 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
         _beverageTPToSpriteIndex.TryGetValue(_brewingStationManager.SelectedHerb.herbTasteProfile, out int spriteIndex);
         Image fPressImg = _fPressPouring.GetComponent<Image>();
         fPressImg.sprite = _pourerSprite[spriteIndex];
+
+        // Set correct beverage color based on selected herb
+        Image fillingImg = _fillingRT.GetComponent<Image>();
+        fillingImg.color = _beverageColors[spriteIndex];
+
+        // Adjust pourer position based on taste profile
+        RectTransform fPressRT = _fPressPouring.GetComponent<RectTransform>();
+        if (_brewingStationManager.SelectedHerb.herbTasteProfile == TasteProfile.Grassy)
+        {
+            fPressRT.anchoredPosition = _pourerPos[1];
+        }
+        else
+        {
+            fPressRT.anchoredPosition = _pourerPos[0];
+        }
 
         _fillingRT.sizeDelta = new Vector2(0f, 0f);
         _isFull = false;
@@ -107,8 +130,8 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
         yield return new WaitForSeconds(2f);
         _pourCoroutine = null;
+        _brewingStationManager.CreateBeverage();
         this.gameObject.SetActive(false);
 
-        _brewingStationManager.CreateBeverage();
     }
 }

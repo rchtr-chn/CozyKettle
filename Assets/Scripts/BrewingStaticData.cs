@@ -45,6 +45,38 @@ public static class BrewingStaticData
         return ItemQuantities[item];
     }
 
+    public static string GetHerbTasteProfile(Items herb)
+    {
+        switch (herb)
+        {
+            case Items.BlackHerb:
+                return "Bold, Robust";
+            case Items.GreenHerb:
+                return "Soothing, Refreshing";
+            case Items.MatchaHerb:
+                return "Grassy, Earthy";
+            case Items.OolongHerb:
+                return "Floral, Fruity, Nutty";
+            default:
+                return "Unknown Herb";
+        }
+    }
+
+    public static string GetAddonTasteProfile(Items addon)
+    {
+        switch (addon)
+        {
+            case Items.Honey:
+                return "Sweet, Floral, Rich";
+            case Items.Lemon:
+                return "Citrusy, Tangy, Refreshing";
+            case Items.Milk:
+                return "Creamy, Smooth, Mild";
+            default:
+                return "Unknown Addon";
+        }
+    }
+
     public static void SetItemQuantity(Items item, int quantity)
     {
         ItemQuantities[item] = quantity;

@@ -11,7 +11,7 @@ public class BrewingPOVScript : MonoBehaviour
     private Vector3 _brewingDeskPos = new Vector3(0f, 420f, 0f);
     public bool IsLookingDown = false;
 
-    public bool IsOnPhone = false;
+    public bool IsOnHoveringUI = false;
     public bool LockPOV = false;
 
     private Vector2 _mousePos;
@@ -29,7 +29,7 @@ public class BrewingPOVScript : MonoBehaviour
 
     private void Update()
     {
-        if(LockPOV || IsOnPhone)
+        if(LockPOV || IsOnHoveringUI)
         {
             return;
         }
@@ -44,9 +44,9 @@ public class BrewingPOVScript : MonoBehaviour
         LockPOV = verdict;
     }
 
-    public void SetIsOnPhone(bool verdict)
+    public void SetIsHoveringUI(bool verdict)
     {
-        IsOnPhone = verdict;
+        IsOnHoveringUI = verdict;
     }
 
     private void CheckPlayerPOV()

@@ -27,7 +27,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _brewingPOVScript.SetIsOnPhone(true);
+        _brewingPOVScript.SetIsHoveringUI(true);
         if (_lerpCoroutine != null)
         {
             StopCoroutine(_lerpCoroutine);
@@ -50,7 +50,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
             StopCoroutine(_lerpCoroutine);
         }
         _lerpCoroutine = StartCoroutine(LerpToPos(_defaultPos));
-        _brewingPOVScript.SetIsOnPhone(false);
+        _brewingPOVScript.SetIsHoveringUI(false);
         _raycastBlocker.blocksRaycasts = true;
     }
 

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class MatchaWhiskingMinigame : MonoBehaviour
 {
     [Header("Whisking Parameters")]
-    [SerializeField] private RectTransform _whiskRT;
+    [SerializeField] private RectTransform _whiskRT; // Assign in inspector
+    [SerializeField] private MatchaWhisk _matchaWhisk; // Assign in inspector
     [SerializeField] private float _maxProgress = 100f;
     [SerializeField] private float _progressDecayRate = 10f; // Progress decay per second
     [SerializeField] private float _progressIncreaseRate = 30f; // Progress increase per second when whisking correctly
@@ -27,6 +28,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
 
     private void OnEnable()
     {
+        _matchaWhisk.enabled = true;
         // reset variables
         _currentProgress = 0f;
         _doneWhisking = false;
@@ -104,6 +106,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
     private void OnWhiskingComplete()
     {
         SoundManager.Instance.StopChargingSFX();
+        _matchaWhisk.enabled = false;
         _doneWhisking = true;
         _whiskCoroutine = StartCoroutine(WaitAndEndMinigame());
     }

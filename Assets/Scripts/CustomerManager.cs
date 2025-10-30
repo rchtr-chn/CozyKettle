@@ -47,7 +47,7 @@ public class CustomerManager : MonoBehaviour
             { _availableBeverages[7], "Something smooth and calming, a little grassy but mellowed out with a creamy touch." }, // green tea + milk
             { _availableBeverages[8], "Give me something earthy and energizing, with that deep, grassy kick of pure matcha." }, // matcha tea
             { _availableBeverages[9], "Bring me something earthy but sweet, like a meadow dusted with golden nectar." }, // matcha tea + honey
-            { _availableBeverages[10], "Give me something bold and grassy, but with a sharp citrus twist to wake me up." }, // matcha tea + lemon
+            { _availableBeverages[10], "Give me something grassy, but with a sharp citrus twist to wake me up." }, // matcha tea + lemon
             { _availableBeverages[11], "I’d like something rich and velvety, with that earthy matcha flavor smoothed out by cream." }, // matcha tea + milk
             { _availableBeverages[12], "I want something smooth and floral, balanced between richness and lightness." }, // oolong tea
             { _availableBeverages[13], "Give me something balanced—floral and nutty, with a soft, natural sweetness." }, // oolong tea + honey
