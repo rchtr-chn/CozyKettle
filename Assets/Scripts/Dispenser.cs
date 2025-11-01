@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -14,6 +16,8 @@ public class Dispenser : MonoBehaviour, IDropHandler
 
     [SerializeField] private Slider _dispenserIntensitySlider; // Assign in inspector
 
+    public static Dictionary<Tuple<TasteProfile, TasteProfile>, TimelineAsset> TasteProfileToTimeline = new();
+
     public UnityEvent OnConfirmSelection;
 
     private void Awake()
@@ -22,6 +26,29 @@ public class Dispenser : MonoBehaviour, IDropHandler
         {
             _brewingStationManager = FindAnyObjectByType<BrewingStationManager>();
         }
+    }
+
+    private void Start()
+    {
+        TasteProfileToTimeline = new()
+        {
+            { Tuple.Create(TasteProfile.Grassy, TasteProfile.None), _brewingCutsceneManager.MatchaCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Grassy, TasteProfile.Sweet), _brewingCutsceneManager.MatchaHoneyCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Grassy, TasteProfile.Citrusy), _brewingCutsceneManager.MatchaLemonCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Grassy, TasteProfile.Creamy), _brewingCutsceneManager.MatchaMilkCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Bold, TasteProfile.None), _brewingCutsceneManager.BrewingCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Bold, TasteProfile.Sweet), _brewingCutsceneManager.BrewingHoneyCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Bold, TasteProfile.Citrusy), _brewingCutsceneManager.BrewingLemonCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Bold, TasteProfile.Creamy), _brewingCutsceneManager.BrewingMilkCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Refreshing, TasteProfile.None), _brewingCutsceneManager.BrewingCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Refreshing, TasteProfile.Sweet), _brewingCutsceneManager.BrewingHoneyCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Refreshing, TasteProfile.Citrusy), _brewingCutsceneManager.BrewingLemonCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Refreshing, TasteProfile.Creamy), _brewingCutsceneManager.BrewingMilkCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Floral, TasteProfile.None), _brewingCutsceneManager.BrewingCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Floral, TasteProfile.Sweet), _brewingCutsceneManager.BrewingHoneyCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Floral, TasteProfile.Citrusy), _brewingCutsceneManager.BrewingLemonCutsceneTimeline },
+            { Tuple.Create(TasteProfile.Floral, TasteProfile.Creamy), _brewingCutsceneManager.BrewingMilkCutsceneTimeline }
+        };
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -58,7 +85,8 @@ public class Dispenser : MonoBehaviour, IDropHandler
             _dispenserIntensitySlider.value = 0.01f;
 
             // Start brewing cutscene sequence and lock POV
-            TimelineAsset selectedTimeline = GetSelectedTimeline(_brewingStationManager.SelectedHerb.HerbTasteProfile, _brewingStationManager.SelectedAddOn.AddOnTasteProfile);
+            TimelineAsset selectedTimeline = TasteProfileToTimeline[Tuple.Create(_brewingStationManager.SelectedHerb.HerbTasteProfile,
+                _brewingStationManager.SelectedAddOn != null ? _brewingStationManager.SelectedAddOn.AddOnTasteProfile : TasteProfile.None)];
             _brewingCutsceneManager.SetCutscene(selectedTimeline);
             OnConfirmSelection.Invoke();
 
@@ -70,51 +98,51 @@ public class Dispenser : MonoBehaviour, IDropHandler
         }
     }
 
-    TimelineAsset GetSelectedTimeline(TasteProfile herb, TasteProfile addOn)
-    {
-        if (herb == TasteProfile.Grassy) // matcha section
-        {
-            if (_brewingStationManager.SelectedAddOn != null)
-            {
-                if (addOn == TasteProfile.Citrusy) // matcha + lemon
-                {
-                    return _brewingCutsceneManager.MatchaLemonCutsceneTimeline;
-                }
-                else if (addOn == TasteProfile.Sweet) // matcha + honey
-                {
-                    return _brewingCutsceneManager.MatchaHoneyCutsceneTimeline;
-                }
-                else // matcha + milk
-                {
-                    return _brewingCutsceneManager.MatchaMilkCutsceneTimeline;
-                }
-            }
-            else // matcha
-            {
-                return _brewingCutsceneManager.MatchaCutsceneTimeline;
-            }
-        }
-        else // non-matcha section
-        {
-            if (_brewingStationManager.SelectedAddOn != null)
-            {
-                if (addOn == TasteProfile.Citrusy) // tea + lemon
-                {
-                    return _brewingCutsceneManager.BrewingLemonCutsceneTimeline;
-                }
-                else if (addOn == TasteProfile.Sweet) // tea + honey
-                {
-                    return _brewingCutsceneManager.BrewingHoneyCutsceneTimeline;
-                }
-                else //  tea + milk
-                {
-                    return _brewingCutsceneManager.BrewingMilkCutsceneTimeline;
-                }
-            }
-            else // tea
-            {
-                return _brewingCutsceneManager.BrewingCutsceneTimeline;
-            }
-        }
-    }
+    //TimelineAsset GetSelectedTimeline(TasteProfile herb, TasteProfile addOn)
+    //{
+    //    if (herb == TasteProfile.Grassy) // matcha section
+    //    {
+    //        if (_brewingStationManager.SelectedAddOn != null || addOn != TasteProfile.None)
+    //        {
+    //            if (addOn == TasteProfile.Citrusy) // matcha + lemon
+    //            {
+    //                return _brewingCutsceneManager.MatchaLemonCutsceneTimeline;
+    //            }
+    //            else if (addOn == TasteProfile.Sweet) // matcha + honey
+    //            {
+    //                return _brewingCutsceneManager.MatchaHoneyCutsceneTimeline;
+    //            }
+    //            else // matcha + milk
+    //            {
+    //                return _brewingCutsceneManager.MatchaMilkCutsceneTimeline;
+    //            }
+    //        }
+    //        else // matcha
+    //        {
+    //            return _brewingCutsceneManager.MatchaCutsceneTimeline;
+    //        }
+    //    }
+    //    else // non-matcha section
+    //    {
+    //        if (_brewingStationManager.SelectedAddOn != null || addOn != TasteProfile.None)
+    //        {
+    //            if (addOn == TasteProfile.Citrusy) // tea + lemon
+    //            {
+    //                return _brewingCutsceneManager.BrewingLemonCutsceneTimeline;
+    //            }
+    //            else if (addOn == TasteProfile.Sweet) // tea + honey
+    //            {
+    //                return _brewingCutsceneManager.BrewingHoneyCutsceneTimeline;
+    //            }
+    //            else //  tea + milk
+    //            {
+    //                return _brewingCutsceneManager.BrewingMilkCutsceneTimeline;
+    //            }
+    //        }
+    //        else // tea
+    //        {
+    //            return _brewingCutsceneManager.BrewingCutsceneTimeline;
+    //        }
+    //    }
+    //}
 }

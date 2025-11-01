@@ -16,6 +16,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
 
     private RectTransform _rectTransform;
     private Coroutine _lerpCoroutine;
+    public bool phoneOpened = false;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        phoneOpened = true;
         if (_lerpCoroutine != null)
         {
             StopCoroutine(_lerpCoroutine);
@@ -45,6 +47,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, 
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        phoneOpened = false;
         if (_lerpCoroutine != null)
         {
             StopCoroutine(_lerpCoroutine);

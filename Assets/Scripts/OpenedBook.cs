@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class OpenedBook : MonoBehaviour
 {
     [SerializeField] private Book book; // Reference to the Book component
+    public bool IsBookOpen = false;
 
     private void Awake()
     {
@@ -14,6 +16,7 @@ public class OpenedBook : MonoBehaviour
 
     private void OnEnable()
     {
+        IsBookOpen = true;
         SoundManager.Instance.PlaySFX(SoundManager.Instance.OpenBookSFX);
 
         book.CurrentIndex = 0; // Reset to the first page when the book is opened
@@ -51,5 +54,11 @@ public class OpenedBook : MonoBehaviour
                 book.PreviousButton.gameObject.SetActive(true);
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        IsBookOpen = false;
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.OpenBookSFX);
     }
 }

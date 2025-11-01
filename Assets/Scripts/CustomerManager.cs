@@ -72,7 +72,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    IEnumerator GetCustomer(Transform seat, float delay)
+    public IEnumerator GetCustomer(Transform seat, float delay)
     {
         float timer = 0f;
         while (timer < delay)
@@ -102,13 +102,44 @@ public class CustomerManager : MonoBehaviour
         _customerCoroutine = null;
         StartCoroutine(MoveToSeat(customer.transform, seat, randSpeed));
     }
+
+    public IEnumerator GetTutorialCustomer(Transform seat, float delay)
+    {
+        float timer = 0f;
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        GameObject customer = Instantiate(CustomerPrefab, CustomerEntrancePos.position, Quaternion.identity, seat.transform);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.CustomerArrivalSFX);
+
+        // Assign a fixed beverage request
+        Customer custScript = customer.GetComponent<Customer>();
+        custScript.CustomerManager = this;
+        custScript.MoneyText = MoneyText;
+        custScript.MoneyGroup = MoneyGroup;
+        Beverage beverage = _availableBeverages[0];
+        custScript.BeverageRequested = beverage;
+        custScript.SpeechBubbleText = _beverageToRequestText[beverage];
+
+        ApplySprites(custScript);
+
+        // Assing summary manager for recording
+        custScript.SummaryManager = _summaryManager;
+
+        float randSpeed = Random.Range(1f, 5f);
+        _customerCoroutine = null;
+        StartCoroutine(MoveToSeat(customer.transform, seat, randSpeed));
+    }
     Beverage GetRequest(Beverage[] availableBevs)
     {
         int rand = Random.Range(0, availableBevs.Length - 1);
         return availableBevs[rand];
     }
 
-    IEnumerator MoveToSeat(Transform customer, Transform target, float speed)
+    public IEnumerator MoveToSeat(Transform customer, Transform target, float speed)
     {
         while (customer.transform.position != target.transform.position)
         {
@@ -143,7 +174,7 @@ public class CustomerManager : MonoBehaviour
         cust.CustomerImage.sprite = cust.DefaultSprite;
     }
 
-    Transform CheckForAvailableSeats()
+    public Transform CheckForAvailableSeats()
     {
         foreach (GameObject seat in CustomerSeats)
         {
@@ -176,5 +207,10 @@ public class CustomerManager : MonoBehaviour
             StopCoroutine(_customerCoroutine);
             _customerCoroutine = null;
         }
+    }
+
+    public void SetShopOpen(bool verdict)
+    {
+        _shopIsOpen = verdict;
     }
 }
