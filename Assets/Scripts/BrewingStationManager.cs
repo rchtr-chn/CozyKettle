@@ -15,8 +15,11 @@ public class BrewingStationManager : MonoBehaviour
     public Herb SelectedHerb;
     public AddOn SelectedAddOn;
     public Beverage SelectedBeverage;
+    public Vector2 SelectedIdealIntensity { get; private set; }
+    public float SelectedBrewingIntensity { get; private set; }
 
     [Header("Minigame References")] // Assign these in inspector
+    [SerializeField] private GameObject _DispenserMinigameGO;
     [SerializeField] private GameObject _boilingWaterMinigameGO;
     [SerializeField] private GameObject _frenchPressMinigameGO;
     [SerializeField] private GameObject _matchaWhiskingMinigameGO;
@@ -138,6 +141,15 @@ public class BrewingStationManager : MonoBehaviour
         _pourToCupMinigameGO.SetActive(true);
     }
 
+    public void StartDispenserMinigame()
+    {
+        if (SelectedHerb == null)
+        {
+            return;
+        }
+        _DispenserMinigameGO.SetActive(true);
+    }
+
     public void CreateBeverage()
     {
         GameObject beverage = Instantiate(_beveragePrefab, _beverageSpawnPos);
@@ -149,7 +161,17 @@ public class BrewingStationManager : MonoBehaviour
                 SelectedAddOn = _addOns[_addOns.Count - 1]; //default to last add-on (none) if no add-on selected
             }
 
-            SelectedBeverage = GetBeverageResult(SelectedHerb.herbTasteProfile, SelectedAddOn.AddOnTasteProfile);
+            //check if the selected brewing intensity is ideal or not
+            if(SelectedBrewingIntensity < SelectedIdealIntensity.x || SelectedBrewingIntensity > SelectedIdealIntensity.y)
+            {
+                beverageDisplay.SetIntensity(false);
+            }
+            else
+            {
+                beverageDisplay.SetIntensity(true);
+            }
+
+            SelectedBeverage = GetBeverageResult(SelectedHerb.HerbTasteProfile, SelectedAddOn.AddOnTasteProfile);
             if(SelectedHerb.IsInstant)
             {
                 SelectedBeverage.BeverageCost *= 0.8f;
@@ -207,14 +229,13 @@ public class BrewingStationManager : MonoBehaviour
     }
 
     //-- Beverage Selection Methods --//
-
     public void SelectBlack()
     {
         if(BrewingStaticData.GetItemQuantity(BrewingStaticData.Items.InstantBlack) > 0)
         {
             foreach (var herb in _instantHerbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Bold)
+                if (herb.HerbTasteProfile == TasteProfile.Bold)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -226,7 +247,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _herbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Bold)
+                if (herb.HerbTasteProfile == TasteProfile.Bold)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -241,7 +262,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _instantHerbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Refreshing)
+                if (herb.HerbTasteProfile == TasteProfile.Refreshing)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -253,7 +274,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _herbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Refreshing)
+                if (herb.HerbTasteProfile == TasteProfile.Refreshing)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -268,7 +289,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _instantHerbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Grassy)
+                if (herb.HerbTasteProfile == TasteProfile.Grassy)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -280,7 +301,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _herbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Grassy)
+                if (herb.HerbTasteProfile == TasteProfile.Grassy)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -295,7 +316,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _instantHerbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Floral)
+                if (herb.HerbTasteProfile == TasteProfile.Floral)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -307,7 +328,7 @@ public class BrewingStationManager : MonoBehaviour
         {
             foreach (var herb in _herbs)
             {
-                if (herb.herbTasteProfile == TasteProfile.Floral)
+                if (herb.HerbTasteProfile == TasteProfile.Floral)
                 {
                     SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
                     SelectedHerb = herb;
@@ -389,6 +410,28 @@ public class BrewingStationManager : MonoBehaviour
         }
     }
 
+    public void SetBrewingIntensity(float intensity)
+    {
+        SelectedBrewingIntensity = intensity;
+        Debug.Log("Brewing Intensity Set To: " + SelectedBrewingIntensity);
+    }
+
+    public float GetBrewingIntensity()
+    {
+        return SelectedBrewingIntensity;
+    }
+
+    public void SetIdealIntensity(Vector2 idealIntensity)
+    {
+        SelectedIdealIntensity = idealIntensity;
+        Debug.Log("Ideal Intensity Set To: " + SelectedIdealIntensity);
+    }
+
+    public Vector2 GetIdealIntensity()
+    {
+        return SelectedIdealIntensity;
+    }
+
     public void DimSelectedAddOn(Image img)
     {
         if (SelectedAddOn != null)
@@ -420,7 +463,7 @@ public class BrewingStationManager : MonoBehaviour
 
     public void StartMinigameSequences()
     {
-        if (SelectedHerb.herbTasteProfile == TasteProfile.Grassy)
+        if (SelectedHerb.HerbTasteProfile == TasteProfile.Grassy)
         {
             StartMatchaWhiskingMinigame();
         }

@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: herb_green
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Green Herb
-  itemDescription: 
+  itemDescription: A versatile base for many gentle brews. The green herb symbolizes
+    renewal and calm, often used for morning teas that awaken the senses without
+    overwhelming them. Its delicate aroma pairs beautifully with floral or citrus
+    accents.
   itemSprite: {fileID: -6468731110257433652, guid: 78d52add7a7117547a52f6b586278871, type: 3}
   itemID: GreenHerb
   itemType: 0
   item: 1
   itemPrice: 150
   IsInstant: 0
-  herbTasteProfile: 0
+  HerbTasteProfile: 0
+  IdealRange: {x: 30, y: 45}
+  BrewColor: {r: 0.63529414, g: 0.38039216, b: 0.07450981, a: 1}

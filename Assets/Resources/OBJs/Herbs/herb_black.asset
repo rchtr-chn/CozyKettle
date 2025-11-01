@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: herb_black
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Black Herb
-  itemDescription: 
+  itemDescription: A powerful herb cherished for its depth and warmth. The black
+    herb embodies strength and endurance. It is often served to travelers and artisans
+    who need clarity of mind and steady energy through long days.
   itemSprite: {fileID: 8100152350484565820, guid: bb452c927ea779c428ccf57ebe00982b, type: 3}
   itemID: BlackHerb
   itemType: 0
+  item: 0
   itemPrice: 170
   IsInstant: 0
-  herbTasteProfile: 1
+  HerbTasteProfile: 1
+  IdealRange: {x: 75, y: 97}
+  BrewColor: {r: 0.3529412, g: 0.16470589, b: 0, a: 1}

@@ -7,6 +7,12 @@ public class BeverageDisplay : MonoBehaviour
     private Image _beverageImage;
     private string _beverageName;
     private string _beverageDescription;
+    public bool IntensityIsIdeal;
+
+    public void SetIntensity(bool verdict)
+    {
+        IntensityIsIdeal = verdict;
+    }
 
     private void Awake()
     {

@@ -20,4 +20,6 @@ MonoBehaviour:
   item: 6
   itemPrice: 250
   IsInstant: 1
-  herbTasteProfile: 3
+  HerbTasteProfile: 3
+  IdealRange: {x: 40, y: 60}
+  BrewColor: {r: 0.5647059, g: 0.7372549, b: 0.29411766, a: 1}

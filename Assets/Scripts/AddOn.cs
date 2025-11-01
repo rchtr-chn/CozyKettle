@@ -4,4 +4,5 @@ using UnityEngine;
 public class AddOn : ItemSO
 {
     public TasteProfile AddOnTasteProfile;
+    public float IdealTemperatureChange;
 }

@@ -40,7 +40,7 @@ public class Customer : MonoBehaviour, IDropHandler
                 finalBeverageCost = givenBeverage.BeverageSO.BeverageCost;
             }
 
-            bool isSatisfied = CompareBeverages(BeverageRequested, givenBeverage.BeverageSO);
+            bool isSatisfied = CompareBeverages(BeverageRequested, givenBeverage.BeverageSO, givenBeverage.IntensityIsIdeal);
 
             CreateMoneyText(finalBeverageCost);
 
@@ -81,9 +81,9 @@ public class Customer : MonoBehaviour, IDropHandler
         _currentSpeechBubble = obj;
     }
 
-    bool CompareBeverages(Beverage requested, Beverage given)
+    bool CompareBeverages(Beverage requested, Beverage given, bool isBrewedIdeally)
     {
-        if(requested.BeverageName == given.BeverageName)
+        if (requested.BeverageName == given.BeverageName && isBrewedIdeally)
         {
             return true;
         }

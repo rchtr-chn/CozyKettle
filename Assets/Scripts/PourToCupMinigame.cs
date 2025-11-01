@@ -15,8 +15,6 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
      * 3 = Oolong
      */
 
-    [SerializeField] private Color[] _beverageColors; // Assign in inspector
-
     private Vector2[] _pourerPos = new Vector2[]
     {
         new Vector2(300f, 220f),   // non matcha
@@ -31,6 +29,8 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
     [SerializeField] private BrewingStationManager _brewingStationManager; // Assign in inspector
     private Coroutine _pourCoroutine;
     private Coroutine _endMinigameCoroutine;
+
+    [SerializeField] private GameObject _minigameParent;
 
     private static Dictionary<TasteProfile, int> _beverageTPToSpriteIndex = new Dictionary<TasteProfile, int>()
     {
@@ -63,17 +63,17 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
     private void ResetOldProgress()
     {
         // Set correct pourer sprite based on selected herb
-        _beverageTPToSpriteIndex.TryGetValue(_brewingStationManager.SelectedHerb.herbTasteProfile, out int spriteIndex);
+        _beverageTPToSpriteIndex.TryGetValue(_brewingStationManager.SelectedHerb.HerbTasteProfile, out int spriteIndex);
         Image fPressImg = _fPressPouring.GetComponent<Image>();
         fPressImg.sprite = _pourerSprite[spriteIndex];
 
         // Set correct beverage color based on selected herb
         Image fillingImg = _fillingRT.GetComponent<Image>();
-        fillingImg.color = _beverageColors[spriteIndex];
+        fillingImg.color = _brewingStationManager.SelectedHerb.BrewColor;
 
         // Adjust pourer position based on taste profile
         RectTransform fPressRT = _fPressPouring.GetComponent<RectTransform>();
-        if (_brewingStationManager.SelectedHerb.herbTasteProfile == TasteProfile.Grassy)
+        if (_brewingStationManager.SelectedHerb.HerbTasteProfile == TasteProfile.Grassy)
         {
             fPressRT.anchoredPosition = _pourerPos[1];
         }
@@ -131,7 +131,7 @@ public class PourToCupMinigame : MonoBehaviour, IPointerDownHandler, IPointerUpH
         yield return new WaitForSeconds(2f);
         _pourCoroutine = null;
         _brewingStationManager.CreateBeverage();
-        this.gameObject.SetActive(false);
+        _minigameParent.SetActive(false);
 
     }
 }

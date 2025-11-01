@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: herb_oolong
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Oolong Herb
-  itemDescription: 
+  itemDescription: Neither fully green nor black, oolong rests in harmony between
+    the two. It is a tea of balance and transformation. Its aroma lingers softly
+    like a memory and is often used in blends that seek emotional clarity.
   itemSprite: {fileID: 865116498140051467, guid: 880f3eafb3efd7343957afe744d3c354, type: 3}
   itemID: OolongHerb
   itemType: 0
   item: 3
   itemPrice: 200
   IsInstant: 0
-  herbTasteProfile: 2
+  HerbTasteProfile: 2
+  IdealRange: {x: 50, y: 70}
+  BrewColor: {r: 0.7647059, g: 0.41960785, b: 0.0627451, a: 1}

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FrenchPressMinigame : MonoBehaviour
 {
+    [SerializeField] private GameObject _minigameParent;
     [SerializeField] private BrewingStationManager _brewingStationManager;
     public bool FullyPressed = false;
     public RectTransform PresserRT;
@@ -59,7 +60,7 @@ public class FrenchPressMinigame : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         _pressCoroutine = null;
-        this.gameObject.SetActive(false);
+        _minigameParent.SetActive(false);
 
         _brewingStationManager.StartPourToCupMinigame();
     }

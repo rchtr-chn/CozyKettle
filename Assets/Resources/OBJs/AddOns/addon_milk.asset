@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: addon_milk
   m_EditorClassIdentifier: 
   itemName: Milk
-  itemDescription: 
+  itemDescription: A symbol of comfort and gentleness. Milk softens bold flavors
+    and adds a pleasing body to teas, creating a mellow and satisfying sip. It is
+    especially beloved in evening blends meant to calm weary hearts.
   itemSprite: {fileID: 9040807175522539672, guid: a7f8ff0a22ee81648a0c885a05b7b79b, type: 3}
   itemID: Milk
   itemType: 1
   item: 10
   itemPrice: 14
   AddOnTasteProfile: 4
+  IdealTemperatureChange: 10

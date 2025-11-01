@@ -18,6 +18,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip DispenserBeepSFX;
     public AudioClip PouringTeaSFX;
+    public AudioClip PouringMilkSFX;
+    public AudioClip ClockalarmSFX;
     public AudioClip FrenchPressSFX;
     public AudioClip WaterPourSFX;
     public AudioClip MatchaWhiskSFX;

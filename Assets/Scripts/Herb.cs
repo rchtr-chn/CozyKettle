@@ -4,5 +4,7 @@ using UnityEngine;
 public class Herb : ItemSO
 {
     public bool IsInstant;
-    public TasteProfile herbTasteProfile;
+    public TasteProfile HerbTasteProfile;
+    public Vector2 IdealRange;
+    public Color BrewColor;
 }

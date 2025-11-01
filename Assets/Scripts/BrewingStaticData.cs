@@ -62,6 +62,29 @@ public static class BrewingStaticData
         }
     }
 
+    public static string GetIngredientIdealTemp(Items ingredient)
+    {
+        switch(ingredient)
+        {
+            case Items.BlackHerb:
+                return "Very strong & hot";
+            case Items.GreenHerb:
+                return "Slightly light & cool";
+            case Items.MatchaHerb:
+                return "Balanced";
+            case Items.OolongHerb:
+                return "Slightly strong & hot";
+            case Items.Honey:
+                return "Warmer";
+            case Items.Lemon:
+                return "Much cooler";
+            case Items.Milk:
+                return "Slightly cooler";
+            default:
+                return "Unknown Ingredient";
+        }
+    }
+
     public static string GetAddonTasteProfile(Items addon)
     {
         switch (addon)
@@ -69,7 +92,7 @@ public static class BrewingStaticData
             case Items.Honey:
                 return "Sweet, Floral, Rich";
             case Items.Lemon:
-                return "Citrusy, Tangy, Refreshing";
+                return "Citrusy, Tangy, Zesty";
             case Items.Milk:
                 return "Creamy, Smooth, Mild";
             default:

@@ -28,10 +28,10 @@ public class BrewingInventoryManager : MonoBehaviour
             { _allItems[8], BrewingStaticData.Items.Honey },
             { _allItems[9], BrewingStaticData.Items.Lemon },
             { _allItems[10], BrewingStaticData.Items.Milk },
-            { _allItems[11], BrewingStaticData.Items.BlackSeed },
-            { _allItems[12], BrewingStaticData.Items.GreenSeed },
-            { _allItems[13], BrewingStaticData.Items.MatchaSeed },
-            { _allItems[14], BrewingStaticData.Items.OolongSeed },
+            //{ _allItems[11], BrewingStaticData.Items.BlackSeed },
+            //{ _allItems[12], BrewingStaticData.Items.GreenSeed },
+            //{ _allItems[13], BrewingStaticData.Items.MatchaSeed },
+            //{ _allItems[14], BrewingStaticData.Items.OolongSeed },
         };
 
         foreach (ItemSO var in _allItems)

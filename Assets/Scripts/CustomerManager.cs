@@ -37,10 +37,10 @@ public class CustomerManager : MonoBehaviour
     void Start()
     {
         _beverageToRequestText = new() {
-            { _availableBeverages[0], "Bring me a strong, robust cup—bold, the kind that warms you right up" }, // black tea
-            { _availableBeverages[1], "Bring me something deep and bold, but sweetened with a comforting warmth." }, // black tea + honey
+            { _availableBeverages[0], "I'd like a very strong, robust-cup with bold bitterness and taste." }, // black tea
+            { _availableBeverages[1], "Bring me something deep and bold, but drizzled with a sweet glaze." }, // black tea + honey
             { _availableBeverages[2], "I’d like something bold but with a bright, citrus edge to cut through the heaviness." }, // black tea + lemon
-            { _availableBeverages[3], "I’m craving a strong, bold cup that’s softened by a rich, creamy finish." }, // black tea + milk
+            { _availableBeverages[3], "I’m craving something bold and bitter, but also creamy." }, // black tea + milk
             { _availableBeverages[4], "I’d like something light and refreshing, with subtle grassy note that feels pure and clean." }, // green tea
             { _availableBeverages[5], "I want something refreshing yet sweet, like a spring breeze with a golden sweetness." }, // green tea + honey
             { _availableBeverages[6], "Give me something sharp, refreshing, and zesty, but still clean and light—like a splash of sunshine." }, // green tea + lemon

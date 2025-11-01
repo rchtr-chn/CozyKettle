@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Book : MonoBehaviour
@@ -16,6 +17,8 @@ public class Book : MonoBehaviour
     public Text[] ItemDescriptionText;
     public Text[] StaticText;
     public Text[] ItemTasteProfile;
+    public Text[] StaticIdealTempText;
+    public Text[] IdealTempText;
 
     // Assign in Inspector
     [Header("Book Buttons")]
@@ -45,12 +48,15 @@ public class Book : MonoBehaviour
             ItemNameText[index].text = "";
             ItemDescriptionText[index].text = "";
             ItemTasteProfile[index].text = "";
+            StaticIdealTempText[index].text = "";
+            IdealTempText[index].text = "";
             return;
         }
 
         ItemImage[index].gameObject.SetActive(true);
         ItemImage[index].sprite = itemData.itemSprite;
         StaticText[index].text = "Taste profile: ";
+        StaticIdealTempText[index].text = "Ideal intensity: ";
         float maxDimension = 200f; // Maximum width or height
         float width = itemData.itemSprite.rect.width;
         float height = itemData.itemSprite.rect.height;
@@ -59,8 +65,9 @@ public class Book : MonoBehaviour
 
         ItemNameText[index].text = itemData.itemName;
         ItemDescriptionText[index].text = itemData.itemDescription;
+        IdealTempText[index].text = BrewingStaticData.GetIngredientIdealTemp(itemData.item);
 
-        if(itemData.itemType == ItemType.Herbs)
+        if (itemData.itemType == ItemType.Herbs)
         {
             ItemTasteProfile[index].text = BrewingStaticData.GetHerbTasteProfile(itemData.item);
         }

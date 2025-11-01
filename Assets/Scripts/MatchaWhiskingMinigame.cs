@@ -25,6 +25,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private BrewingStationManager _brewingStationManager; // Assign in inspector
+    [SerializeField] private GameObject _minigameParent;
 
     private void OnEnable()
     {
@@ -117,7 +118,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         _whiskCoroutine = null;
-        this.gameObject.SetActive(false);
+        _minigameParent.SetActive(false);
 
         _brewingStationManager.StartPourToCupMinigame();
     }

@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: addon_honey
   m_EditorClassIdentifier: 
   itemName: Honey
-  itemDescription: 
+  itemDescription: "Nature\u2019s nectar and a universal harmonizer. Honey smooths
+    the sharp edges of any brew, lending warmth and kindness even to the bitterest
+    herbs. Some say it carries the whispers of every flower it has touched."
   itemSprite: {fileID: -3418515021101842755, guid: c0a6da1a55f8bad45b5a90d15411b388, type: 3}
   itemID: Honey
   itemType: 1
   item: 8
   itemPrice: 18
   AddOnTasteProfile: 5
+  IdealTemperatureChange: -10

@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: herb_matcha
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Matcha Powder
-  itemDescription: 
+  itemDescription: Crafted from the youngest tea leaves, matcha powder is revered
+    for its ritual origins. It carries a serene energy that grounds the mind while
+    sharpening focus. Many say it brings peace to those who brew it with care.
   itemSprite: {fileID: -8939722390838811025, guid: 2fd72e1175066ee41a3902fcb6800751, type: 3}
   itemID: MatchaHerb
   itemType: 0
   item: 2
   itemPrice: 250
   IsInstant: 0
-  herbTasteProfile: 3
+  HerbTasteProfile: 3
+  IdealRange: {x: 40, y: 60}
+  BrewColor: {r: 0.5647059, g: 0.7372549, b: 0.29411766, a: 1}

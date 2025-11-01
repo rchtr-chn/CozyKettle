@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: addon_lemon
   m_EditorClassIdentifier: 
   itemName: Lemon
-  itemDescription: 
+  itemDescription: A spark of sunlight in liquid form. Lemon adds clarity and brightness
+    to dark or heavy brews. Known for lifting the spirit of tea, it is said that
+    a drop of lemon can wake even the sleepiest of leaves.
   itemSprite: {fileID: 1247028372113903649, guid: 5f9208a6897596a43a08934125e6e2f1, type: 3}
   itemID: Lemon
   itemType: 1
   item: 9
   itemPrice: 9
   AddOnTasteProfile: 6
+  IdealTemperatureChange: -15
