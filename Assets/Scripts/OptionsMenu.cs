@@ -9,6 +9,7 @@ public class OptionsMenu : MonoBehaviour
     private void Start()
     {
         _musicSlider.onValueChanged.AddListener(SoundManager.Instance.SetMusicVolume);
+
         _sfxSlider.onValueChanged.AddListener(SoundManager.Instance.SetSFXVolume);
     }
 }

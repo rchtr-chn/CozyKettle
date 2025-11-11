@@ -35,6 +35,9 @@ public class SummaryManager : MonoBehaviour
 
     private void Awake()
     {
+        ProceedButton.onClick.AddListener(() => SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX));
+        ProceedButton.onClick.AddListener(SaveManager.Instance.SaveGame);
+        ProceedButton.onClick.AddListener(() => TutorialManager.Instance.SetTutorial(false));
         ProceedButton.onClick.AddListener(SceneController.Instance.LoadTeaShopScene);
     }
 

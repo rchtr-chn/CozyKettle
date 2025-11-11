@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrenchPressMinigame : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class FrenchPressMinigame : MonoBehaviour
     public bool FullyPressed = false;
     public RectTransform PresserRT;
     public RectTransform FillingRT;
+    [SerializeField] private Image _fillingTopImage;
+    [SerializeField] private Image _fillingBottomImage;
     private Vector2 _presserInitPos = new Vector2(0, 200f);
     private Vector2 _fillingInitPos = new Vector2(0, -225f);
     private Vector2 _pressedEndPos = new Vector2(0, -25f);
@@ -19,6 +22,12 @@ public class FrenchPressMinigame : MonoBehaviour
     {
         PresserRT.anchoredPosition = _presserInitPos;
         FillingRT.anchoredPosition = _fillingInitPos;
+
+        Color brewColor = _brewingStationManager.SelectedHerb.BrewColor;
+        brewColor.a = 0.9f;
+        _fillingBottomImage.color = brewColor;
+        _fillingTopImage.color = brewColor;
+
         FullyPressed = false;
     }
 

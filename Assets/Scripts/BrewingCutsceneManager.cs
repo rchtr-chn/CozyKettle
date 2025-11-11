@@ -31,8 +31,10 @@ public class BrewingCutsceneManager : MonoBehaviour
     {
         if(_playableDirector.playableAsset != _summaryScreenTimeline)
         {
-            _fPressFillingBottom.color = _brewingStationManager.SelectedHerb.BrewColor;
-            _fPressFillingTop.color = _brewingStationManager.SelectedHerb.BrewColor;
+            Color brewColor = _brewingStationManager.SelectedHerb.BrewColor;
+            brewColor.a = 0.9f;
+            _fPressFillingBottom.color = brewColor;
+            _fPressFillingTop.color = brewColor;
 
             _playableDirector.stopped += OnVideoEnd;
         }

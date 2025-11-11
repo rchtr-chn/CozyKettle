@@ -8,6 +8,8 @@ public class InitialFadeManager : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        yield return new WaitForSeconds(1f); // Optional delay before starting fade-in
+
         float duration = 1f; // Duration of the fade
         float elapsed = 0f;
         Color color = _fadeImage.color;

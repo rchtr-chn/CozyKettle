@@ -9068,15 +9068,11 @@ MonoBehaviour:
   - {fileID: 479184953}
   - {fileID: 316594846}
   _customerDefaultSprites:
-  - {fileID: 4896380307953567204, guid: 50974c73cd0f0d4429c97d586f182e8b, type: 3}
-  - {fileID: 5780552547162140007, guid: 50974c73cd0f0d4429c97d586f182e8b, type: 3}
-  - {fileID: 1635868484372007858, guid: 50974c73cd0f0d4429c97d586f182e8b, type: 3}
-  - {fileID: -4006373862683856107, guid: 50974c73cd0f0d4429c97d586f182e8b, type: 3}
+  - {fileID: -7814473755432860136, guid: f31c23ed3e5df7641a8489e2ef316d1f, type: 3}
+  - {fileID: 976607894534313761, guid: 63c9e23fc932a504a9b3f166e4525717, type: 3}
   _customerUnsatisfiedSprites:
-  - {fileID: 5242080062028359115, guid: 66470fab04f485049b994556677a8ab7, type: 3}
-  - {fileID: 1104914482688437679, guid: 66470fab04f485049b994556677a8ab7, type: 3}
-  - {fileID: 8556516414057411208, guid: 66470fab04f485049b994556677a8ab7, type: 3}
-  - {fileID: 635591701901396935, guid: 66470fab04f485049b994556677a8ab7, type: 3}
+  - {fileID: -7814473755432860136, guid: f31c23ed3e5df7641a8489e2ef316d1f, type: 3}
+  - {fileID: 976607894534313761, guid: 63c9e23fc932a504a9b3f166e4525717, type: 3}
   _availableBeverages:
   - {fileID: 11400000, guid: 5e4e4929d40bfcb488f3ef767c9ccaae, type: 2}
   - {fileID: 11400000, guid: baede4c8d03b91f4891f492287626997, type: 2}
@@ -13989,6 +13985,8 @@ MonoBehaviour:
   FullyPressed: 0
   PresserRT: {fileID: 1722038290}
   FillingRT: {fileID: 1765025403}
+  _fillingTopImage: {fileID: 1982556314}
+  _fillingBottomImage: {fileID: 1305687282}
   _overlapPos: {x: 0, y: 45}
 --- !u!1 &1063062285
 GameObject:

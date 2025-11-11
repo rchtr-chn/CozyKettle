@@ -32,10 +32,36 @@ public class TutorialManager : MonoBehaviour
 
     Coroutine _textCoroutine;
 
+    public static TutorialManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private bool _isNewGame = true;
+
+    public void SetTutorial(bool verdict)
+    {
+        _isNewGame = verdict;
+    }
+
+    public int GetTutorialValue()
+    {
+        if (_isNewGame)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
     void Start()
     {
+        SaveManager.Instance.LoadGame();
+
         if (_isNewGame)
         {
             ShowTutorial();
