@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 2fd72e1175066ee41a3902fcb6800751
+guid: 3d6f8e7991dddce4a818ec0c55155f9f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8939722390838811025
-    second: MatchaPowder_0
+      213: 5062470687403154182
+    second: Matcha powder_0
+  - first:
+      213: -4663728055607000788
+    second: Matcha powder_1
+  - first:
+      213: -4562942954576779844
+    second: Matcha powder_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MatchaPowder_0
+      name: Matcha powder_0
       rect:
         serializedVersion: 2
-        x: 184
-        y: 167
-        width: 246
-        height: 341
+        x: 49
+        y: 116
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f666277a9d9bfe380800000000000000
-      internalID: -8939722390838811025
+      spriteID: 60b1e70a442814640800000000000000
+      internalID: 5062470687403154182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Matcha powder_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 108
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21858cfa0c174fb0800000000000000
+      internalID: -4663728055607000788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Matcha powder_2
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 26
+        width: 103
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb5641eee8b2da0c0800000000000000
+      internalID: -4562942954576779844
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MatchaPowder_0: -8939722390838811025
+      Matcha powder_0: 5062470687403154182
+      Matcha powder_1: -4663728055607000788
+      Matcha powder_2: -4562942954576779844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

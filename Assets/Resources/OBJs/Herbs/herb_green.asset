@@ -17,7 +17,7 @@ MonoBehaviour:
     renewal and calm, often used for morning teas that awaken the senses without
     overwhelming them. Its delicate aroma pairs beautifully with floral or citrus
     accents.
-  itemSprite: {fileID: -6468731110257433652, guid: 78d52add7a7117547a52f6b586278871, type: 3}
+  itemSprite: {fileID: 6852536258267712015, guid: 2896c1d9438823d4d9567d1e32ae3ed4, type: 3}
   itemID: GreenHerb
   itemType: 0
   item: 1

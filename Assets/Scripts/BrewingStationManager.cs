@@ -27,7 +27,7 @@ public class BrewingStationManager : MonoBehaviour
 
     [Header("Beverage Creation References")] // Assign these in inspector
     [SerializeField] private GameObject _beveragePrefab;
-    [SerializeField] private RectTransform _beverageSpawnPos;
+    public RectTransform _beverageSpawnPos;
     [SerializeField] private Transform _beverageParent;
 
     [Header("Script References")] // Assign these in inspector

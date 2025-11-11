@@ -16,7 +16,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
     private Vector2 _lastWhiskPosition;
     private float _currentProgress = 0f;
     private bool _doneWhisking = false;
-    private Coroutine _whiskCoroutine;
+    private Coroutine _whiskCompleteCoroutine;
     private bool _whiskSFXPlaying = false;
 
     [Header("UI Elements")]
@@ -71,15 +71,13 @@ public class MatchaWhiskingMinigame : MonoBehaviour
                 }
                 _currentProgress -= _progressDecayRate * Time.deltaTime;
             }
-            Debug.Log("Whisking Speed: " + whiskingSpeed);
+
+            // clamps progress and updates froth opacity
+            _currentProgress = Mathf.Clamp(_currentProgress, 0f, _maxProgress);
+            AdjustMatchaFoamOpacity();
         }
-
-        // clamps progress and updates froth opacity
-        _currentProgress = Mathf.Clamp(_currentProgress, 0f, _maxProgress);
-        AdjustMatchaFoamOpacity();
-
         // checks for completion
-        if (_currentProgress >= _maxProgress)
+        if (_currentProgress >= _maxProgress && _whiskCompleteCoroutine == null)
         {
             OnWhiskingComplete();
         }
@@ -109,7 +107,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
         SoundManager.Instance.StopChargingSFX();
         _matchaWhisk.enabled = false;
         _doneWhisking = true;
-        _whiskCoroutine = StartCoroutine(WaitAndEndMinigame());
+        _whiskCompleteCoroutine = StartCoroutine(WaitAndEndMinigame());
     }
     IEnumerator WaitAndEndMinigame()
     {
@@ -117,7 +115,7 @@ public class MatchaWhiskingMinigame : MonoBehaviour
         SoundManager.Instance.PlaySFX(SoundManager.Instance.MinigameSuccessSFX);
 
         yield return new WaitForSeconds(2f);
-        _whiskCoroutine = null;
+        _whiskCompleteCoroutine = null;
         _minigameParent.SetActive(false);
 
         _brewingStationManager.StartPourToCupMinigame();

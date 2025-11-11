@@ -76,7 +76,7 @@ public class Dispenser : MonoBehaviour, IDropHandler
 
     public void ConfirmSelection(Kettle kettle)
     {
-        if (kettle.transform.parent.name == this.transform.name)
+        if (kettle.transform.parent.name == this.transform.name && _brewingStationManager._beverageSpawnPos.childCount == 0)
         {
             SoundManager.Instance.PlaySFX(SoundManager.Instance.DispenserBeepSFX);
 

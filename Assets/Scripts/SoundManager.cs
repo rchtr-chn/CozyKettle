@@ -59,6 +59,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayMusic();
+    }
+
     public void PlayMusic()
     {
         MusicSource.clip = BackgroundMusic;
@@ -83,5 +88,15 @@ public class SoundManager : MonoBehaviour
         SFXSource.Stop();
         SFXSource.loop = false;
         SFXSource.clip = null;
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicSource.volume = volume;
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        SFXSource.volume = volume;
     }
 }

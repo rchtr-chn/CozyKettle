@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bb452c927ea779c428ccf57ebe00982b
+guid: 86fd50455ad634b49a157315e3e43b5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8100152350484565820
-    second: BlackHerb_0
+      213: 114795334293308191
+    second: BlackHerbJar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlackHerb_0
+      name: BlackHerbJar_0
       rect:
         serializedVersion: 2
         x: 174
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3f8d2575a5896070800000000000000
-      internalID: 8100152350484565820
+      spriteID: f13cc629fb5d79100800000000000000
+      internalID: 114795334293308191
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BlackHerb_0: 8100152350484565820
+      BlackHerbJar_0: 114795334293308191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

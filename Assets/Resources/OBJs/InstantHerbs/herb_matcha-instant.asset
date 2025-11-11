@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Instant Matcha Powder
   itemDescription: 
-  itemSprite: {fileID: -8939722390838811025, guid: 2fd72e1175066ee41a3902fcb6800751, type: 3}
+  itemSprite: {fileID: -896461996248906613, guid: 5e6c6db5e32dd0144b5c68c8db35c70a, type: 3}
   itemID: InstantMatcha
   itemType: 3
   item: 6

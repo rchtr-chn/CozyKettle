@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: A powerful herb cherished for its depth and warmth. The black
     herb embodies strength and endurance. It is often served to travelers and artisans
     who need clarity of mind and steady energy through long days.
-  itemSprite: {fileID: 8100152350484565820, guid: bb452c927ea779c428ccf57ebe00982b, type: 3}
+  itemSprite: {fileID: 114795334293308191, guid: 86fd50455ad634b49a157315e3e43b5e, type: 3}
   itemID: BlackHerb
   itemType: 0
   item: 0

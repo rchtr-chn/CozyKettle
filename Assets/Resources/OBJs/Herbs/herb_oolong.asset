@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: Neither fully green nor black, oolong rests in harmony between
     the two. It is a tea of balance and transformation. Its aroma lingers softly
     like a memory and is often used in blends that seek emotional clarity.
-  itemSprite: {fileID: 865116498140051467, guid: 880f3eafb3efd7343957afe744d3c354, type: 3}
+  itemSprite: {fileID: 2345737180069875707, guid: 596f76b74d2841a4f8ba3c6b3a023efc, type: 3}
   itemID: OolongHerb
   itemType: 0
   item: 3

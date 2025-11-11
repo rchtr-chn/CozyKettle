@@ -13,6 +13,9 @@ public class SummaryManager : MonoBehaviour
     public Text PotentialEarningsText;
     public Text NetProfitText;
 
+    [Header("UI References")]
+    public Button ProceedButton;
+
     [Header("Data Tracking")]
     public int TotalCustomersServed { get; private set; } = 0;
     public int TotalSatisfiedCustomers { get; private set; } = 0;
@@ -29,6 +32,11 @@ public class SummaryManager : MonoBehaviour
     public float GetGrossEarnings() { return GrossEarnings; }
     public float GetPotentialEarnings() { return PotentialEarnings; }
     public float GetNetProfit() { return NetProfit; }
+
+    private void Awake()
+    {
+        ProceedButton.onClick.AddListener(SceneController.Instance.LoadTeaShopScene);
+    }
 
     public void RecordCustomerServed(bool isSatisfied, float earning, float potentialEarning)
     {

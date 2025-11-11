@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Instant Green Herb
   itemDescription: 
-  itemSprite: {fileID: -6468731110257433652, guid: 78d52add7a7117547a52f6b586278871, type: 3}
+  itemSprite: {fileID: 6852536258267712015, guid: 2896c1d9438823d4d9567d1e32ae3ed4, type: 3}
   itemID: InstantGreen
   itemType: 3
   item: 5

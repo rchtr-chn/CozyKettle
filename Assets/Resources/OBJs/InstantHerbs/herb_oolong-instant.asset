@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Herb
   itemName: Instant Oolong Herb
   itemDescription: 
-  itemSprite: {fileID: 865116498140051467, guid: 880f3eafb3efd7343957afe744d3c354, type: 3}
+  itemSprite: {fileID: 2345737180069875707, guid: 596f76b74d2841a4f8ba3c6b3a023efc, type: 3}
   itemID: InstantOolong
   itemType: 3
   item: 7
