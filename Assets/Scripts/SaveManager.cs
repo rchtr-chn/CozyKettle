@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class SaveManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("IsNewGame", 1);
         PlayerPrefs.DeleteAll();
+
+        if(SceneManager.GetActiveScene().name == "TeaShopScene")
+        {
+            SceneController.Instance.LoadStartMenuScene();
+        }
+
         Debug.Log("Save data deleted.");
     }
 
