@@ -304,7 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18c4f5dccc431745b8fcfad12f3943b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  BackgroundMusic: {fileID: 0}
+  BackgroundMusic: {fileID: 8300000, guid: 244cadd2139a6a542a7f700c2ac21770, type: 3}
+  FootstepSFX: {fileID: 8300000, guid: fb8942aa6d6a3404abf23bbc301631a9, type: 3}
   CustomerArrivalSFX: {fileID: 8300000, guid: f3b9b552983362e40820afc27ceec41d, type: 3}
   OrderPlacedSFX: {fileID: 0}
   BeverageServedSFX: {fileID: 0}
@@ -330,7 +331,7 @@ MonoBehaviour:
   BuyItemSFX: {fileID: 8300000, guid: 7e68c37d45610b740bc9d6dada9e83bc, type: 3}
   StartOfDaySFX: {fileID: 0}
   EndOfDaySFX: {fileID: 0}
-  ClickOnJarSFX: {fileID: 8300000, guid: eeb9f84d4946a9b4091c14510ffca4a2, type: 3}
+  ClickOnJarSFX: {fileID: 8300000, guid: dfcc6be1fa1fdf040a6fc6dc12339680, type: 3}
   PhoneClickSFX: {fileID: 8300000, guid: df65c242a2780604ca8b63eff7882550, type: 3}
   rainSFX: {fileID: 8300000, guid: 4c5ac2f14b65e5941858dfb65a4b39dd, type: 3}
   MusicSource: {fileID: 6849545720853863554}

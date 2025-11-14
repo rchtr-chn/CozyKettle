@@ -753,14 +753,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3151508924146836652, guid: 6bce321f309ff6648a771e080384ad15, type: 3}
-      propertyPath: FootstepSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: fb8942aa6d6a3404abf23bbc301631a9, type: 3}
-    - target: {fileID: 3151508924146836652, guid: 6bce321f309ff6648a771e080384ad15, type: 3}
-      propertyPath: BackgroundMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 46a16908f5f748b4f9863477d33c8606, type: 3}
     - target: {fileID: 8274635562358651418, guid: 6bce321f309ff6648a771e080384ad15, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -2034,15 +2026,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209654054005750376, guid: d68ec05da14e68c4caa79f2a06833f10, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1209654054005750376, guid: d68ec05da14e68c4caa79f2a06833f10, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1209654054005750376, guid: d68ec05da14e68c4caa79f2a06833f10, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1209654054005750376, guid: d68ec05da14e68c4caa79f2a06833f10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -48,7 +48,10 @@ public class SaveManager : MonoBehaviour
             int quantity = BrewingStaticData.GetItemQuantity(item);
             PlayerPrefs.SetInt(item.ToString() + "_Quantity", quantity);
         }
-        PlayerPrefs.SetInt("IsNewGame", TutorialManager.Instance.GetTutorialValue());
+        if(TutorialManager.Instance != null)
+        {
+            PlayerPrefs.SetInt("IsNewGame", TutorialManager.Instance.GetTutorialValue());
+        }
         PlayerPrefs.Save();
         Debug.Log("Game saved.");
     }
