@@ -27693,6 +27693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3151508924146836652, guid: 6bce321f309ff6648a771e080384ad15, type: 3}
+      propertyPath: ClickOnJarSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: dfcc6be1fa1fdf040a6fc6dc12339680, type: 3}
     - target: {fileID: 8274635562358651418, guid: 6bce321f309ff6648a771e080384ad15, type: 3}
       propertyPath: m_Name
       value: SoundManager

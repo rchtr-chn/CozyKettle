@@ -11,7 +11,7 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start()
     {
-        _deleteButton.onClick.AddListener(() => SaveManager.Instance.DeleteSaveData());
+        _deleteButton.onClick.AddListener(() => SaveManager.Instance.DeleteSaveData(_deleteButton));
         _exitButton.onClick.AddListener(() => SceneController.Instance.LoadStartMenuScene());
 
         _musicSlider.value = SoundManager.Instance.GetMusicVolume();
@@ -19,5 +19,10 @@ public class OptionsMenu : MonoBehaviour
 
         _musicSlider.onValueChanged.AddListener(SoundManager.Instance.SetMusicVolume);
         _sfxSlider.onValueChanged.AddListener(SoundManager.Instance.SetSFXVolume);
+
+        if(PlayerPrefs.GetInt("IsNewGame", 1) == 1)
+        {
+            _deleteButton.interactable = false;
+        }
     }
 }

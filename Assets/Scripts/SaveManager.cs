@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    public void DeleteSaveData()
+    public void DeleteSaveData(Button delButton)
     {
         PlayerStaticData.SetMoney(500f);
         foreach (BrewingStaticData.Items item in System.Enum.GetValues(typeof(BrewingStaticData.Items)))
@@ -29,7 +30,9 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("IsNewGame", 1);
         PlayerPrefs.DeleteAll();
 
-        if(SceneManager.GetActiveScene().name == "TeaShopScene")
+        delButton.interactable = false;
+
+        if (SceneManager.GetActiveScene().name == "TeaShopScene")
         {
             SceneController.Instance.LoadStartMenuScene();
         }

@@ -237,7 +237,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Bold)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     return;
                 }
@@ -249,7 +249,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Bold)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     break;
                 }
@@ -264,7 +264,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Refreshing)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     return;
                 }
@@ -276,7 +276,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Refreshing)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     break;
                 }
@@ -291,7 +291,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Grassy)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     return;
                 }
@@ -303,7 +303,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Grassy)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     break;
                 }
@@ -318,7 +318,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Floral)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     return;
                 }
@@ -330,7 +330,7 @@ public class BrewingStationManager : MonoBehaviour
             {
                 if (herb.HerbTasteProfile == TasteProfile.Floral)
                 {
-                    SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                     SelectedHerb = herb;
                     break;
                 }
@@ -372,7 +372,7 @@ public class BrewingStationManager : MonoBehaviour
                 {
                     if (addOn.AddOnTasteProfile == TasteProfile.Sweet)
                     {
-                        SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                        SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                         SelectedAddOn = addOn;
                         break;
                     }
@@ -380,7 +380,7 @@ public class BrewingStationManager : MonoBehaviour
             }
             else if (SelectedAddOn.AddOnTasteProfile == TasteProfile.Sweet)
             {
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX);
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.ClickOnJarSFX);
                 SelectedAddOn = null;
             }
         }

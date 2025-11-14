@@ -27,6 +27,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadStartMenuScene()
     {
+        SaveManager.Instance.SaveGame();
         SceneManager.LoadScene("StartMenuScene");
     }
 

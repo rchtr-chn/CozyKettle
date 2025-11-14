@@ -331,7 +331,7 @@ public class TutorialManager : MonoBehaviour
         foreach (char c in message)
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.04f);
         }
     }
 }

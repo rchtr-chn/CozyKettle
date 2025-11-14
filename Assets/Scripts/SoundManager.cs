@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip BackgroundMusic;
 
+    public AudioClip FootstepSFX;
     public AudioClip CustomerArrivalSFX;
     public AudioClip OrderPlacedSFX;
     public AudioClip BeverageServedSFX;

@@ -13,7 +13,8 @@ public class StartMenu : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private RectTransform _startMenuBG; // Assign in inspector
-    [SerializeField] private CanvasGroup _fadeEffect; // Assign in inspector
+    [SerializeField] private CanvasGroup _fadeOutEffect; // Assign in inspector
+    [SerializeField] private CanvasGroup _fadeInEffect; // Assign in inspector
     [SerializeField] private Button _startButton; // Assign in inspector
     [SerializeField] private Button _optionButton; // Assign in inspector
 
@@ -24,10 +25,16 @@ public class StartMenu : MonoBehaviour
         _optionButton.onClick.AddListener(() => SoundManager.Instance.PlaySFX(SoundManager.Instance.UIClickSFX));
     }
 
+    private void Start()
+    {
+        StartCoroutine(InitialFadeIn());
+    }
+
     public void OnStartButtonClicked()
     {
         _startButton.gameObject.SetActive(false);
         _optionButton.gameObject.SetActive(false);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.FootstepSFX);
         StartCoroutine(ZoomInAndStartGame());
     }
 
@@ -36,7 +43,7 @@ public class StartMenu : MonoBehaviour
         float elapsed = 0f;
 
         float startScale = _startMenuBG.localScale.x;
-        float startAlpha = _fadeEffect.alpha;
+        float startAlpha = _fadeOutEffect.alpha;
         Vector2 startPosition = _startMenuBG.anchoredPosition;
 
         while (elapsed < _zoomDuration)
@@ -48,17 +55,30 @@ public class StartMenu : MonoBehaviour
             _startMenuBG.anchoredPosition = newPosition;
 
             float newAlpha = Mathf.Lerp(startAlpha, _targetAlpha, elapsed / _zoomDuration);
-            _fadeEffect.alpha = newAlpha;
+            _fadeOutEffect.alpha = newAlpha;
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         _startMenuBG.localScale = new Vector3(_targetScale, _targetScale, 1f);
-        _fadeEffect.alpha = _targetAlpha;
+        _fadeOutEffect.alpha = _targetAlpha;
         _startMenuBG.anchoredPosition = _targetPosition;
 
 
         SceneController.Instance.LoadTeaShopScene();
+    }
+
+    IEnumerator InitialFadeIn()
+    {
+        float fadeDuration = 0.75f;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            _fadeInEffect.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        _fadeInEffect.alpha = 0f;
     }
 }
