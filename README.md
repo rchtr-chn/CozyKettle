@@ -8,10 +8,10 @@
   <tr>
     <!-- Bottom two gifs -->
     <td align="center" width="50%">
-      <img src="https://github.com/rchtr-chn/Rat-Gambler/raw/main/readme-bank/cozykettle-gif-1.gif" width="100%"/>
+      <img src="https://github.com/rchtr-chn/CozyKettle/raw/main/readme-bank/cozykettle-gif-1.gif" width="100%"/>
     </td>
     <td align="center" width="50%">
-      <img src="https://github.com/rchtr-chn/Rat-Gambler/raw/main/readme-bank/cozykettle-gif-3.gif" width="100%"/>
+      <img src="https://github.com/rchtr-chn/CozyKettle/raw/main/readme-bank/cozykettle-gif-3.gif" width="100%"/>
     </td>
   </tr>
 </table>
