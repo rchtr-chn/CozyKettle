@@ -22,7 +22,7 @@ public class IntroManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKey(KeyCode.Space))
         {
             SceneController.Instance.LoadStartMenuScene();
         }
