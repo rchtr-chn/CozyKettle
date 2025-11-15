@@ -77,16 +77,17 @@
 
   | Input | Function |
   | -------------------- | --------------------- |
-  | Hold and move cursor | Select and play cards |
+  | Hold and move cursor | Select and drag UI |
   
 <h2>📋 Project Information</h2>
 
-  ![Unity Version 6000.2.2f1](https://img.shields.io/badge/Unity_Version-6000.2.2f1-FFFFFF.svg?style=flat-square&logo=unity) <br/>
-  Game Build: ![WebGL](https://img.shields.io/badge/WebGL-990000.svg?style=flat-square&logo=WebGL) ![Windows](https://img.shields.io/badge/Windows-004fe1.svg?style=flat-square&logo=windows) <br/>
-  Most art assets are made by our game artists, aside from orange point sign and trashbin vector from [![Pixabay](https://img.shields.io/badge/Pixabay-191B26.svg?style=flat-square&logo=Pixabay)](https://pixabay.com) <br/>
+  ![Unity Version 6000.2.9f1](https://img.shields.io/badge/Unity_Version-6000.2.9f1-FFFFFF.svg?style=flat-square&logo=unity) <br/>
+  Game Build: ![Windows](https://img.shields.io/badge/Windows-004fe1.svg?style=flat-square&logo=windows) <br/>
+  All art assets are made by our [game artist](https://kelvinkel.my.canva.site/) <br/>
+  BGM is made by our [game designer](https://github.com/wi1wil)
   All SFX can be found in [![Pixabay](https://img.shields.io/badge/Pixabay-191B26.svg?style=flat-square&logo=Pixabay)](https://pixabay.com) <br/> <br/>
   
   <b>Team:</b>
   - <a href="https://github.com/rchtr-chn">Richter Cheniago</a> (Game programmer)
-  - Sony Aliem (Game designer and artist)
-  - <a href="https://www.behance.net/epenaja">Melvern Sjah</a> (Game designer and artist)
+  - <a href="https://github.com/wi1wil">Wilson Halim</a> (Game designer)
+  - <a href="https://kelvinkel.my.canva.site/">Kelvin</a> (Game artist)
