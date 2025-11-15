@@ -25,6 +25,8 @@
   One last hand… one last cookie… one last chance at financial freedom.<br/>
   Will you claw your way out of debt, or will the mob bury you under a mountain of crumbs?
 
+###
+
 <h2>📜 Scripts</h2>
 
   | Script | Description |
