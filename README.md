@@ -27,11 +27,11 @@
 
   | Script | Description |
   | ------ | ----------- |
-  | `DeckManagerScript.cs` | Manages starting deck and saves any modification done to deck by player |
-  | `HandManagerScript.cs` | Receives cards from `DeckManagerScript.cs` to be drawn on hand and returned to when needed|
-  | `GameManagerScript.cs` | Organizes and centralized other minor managers and manages the turn-based system |
-  | `ShopManagerScript.cs` | Manages the shop's cards to be displayed and sold to the player |
-  | `Card.cs` | Blueprint for SOs that will carry a card's value and the potential card effect |
+  | `ItemSO.cs` | scriptable object that will be inherited by `herb.cs`, `addon.cs`, and etc. |
+  | `BrewingManagerScript.cs` | Manages the entire brewing flow and micromanaging other aiding managers |
+  | `TimeManager.cs` | Manages the game's time system |
+  | `SummaryManager.cs` | Manages the summary screen's display |
+  | `Book.cs` | Manages book data and display |
   | etc. |
 
 <h2>📂 Folder Descriptions</h2>
