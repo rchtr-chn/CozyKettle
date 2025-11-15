@@ -77,7 +77,7 @@ As the sole main programmer, I dedicated around 60 hours in total to this projec
 
   | Input | Function |
   | -------------------- | --------------------- |
-  | Hold and move cursor | Select and drag UI |
+  | Hold and move cursor | Select and drag item/UI |
   
 <h2>📋 Project Information</h2>
 
