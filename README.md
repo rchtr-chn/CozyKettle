@@ -37,26 +37,33 @@
 <h2>📂 Folder Descriptions</h2>
 
   ```
-  ├── Rat-Gambler                      # Root folder of this project
+  ├── CozyKettle                     # Root folder of this project
     ...
     ├── Assets                         # Assets folder of this project
       ...
-      ├── Audio                        # Stores all BGM and audio clips used in this project
-      ├── Fonts                        # Stores all fonts used in this project
       ├── Resources                    # Parent folder to organize blueprints (Scriptable Objects) and prefabs
+        ...
         ├── CardData                   # Parent folder of all scriptable object types that are used in this project
-          ...
+        ├── Fonts                      # Stores all fonts used in this project
+        ├── SoundEffects               # Stores all BGM and audio clips used in this project
+        ├── VisualArtAssets            # Parent folder of all sprites that are used in this project
+        ├── Timeline                   # Parent folder of all timeline cutscenes that are used in this project
+        ├── OBJs                       # Parent folder of all scriptable objects that are used in this project
+        ├── Materials                  # Parent folder of all materials that are used in this project
         ├── Prefabs                    # Parent folder that stores prefabs that are instantiated during the project's runtime
-          ...
+        ├── AudioMixers                # Parent folder of all audio mixers in this project
+        ├── Fonts                      # Parent folder of all fonts that are used int his project
+        ...
       ├── Scenes                       # Stores all Unity Scenes used in this project
       ├── Scripts                      # Parent folder of all types of scripts that are used in this project
-        ├── BackgroundManagers         # Stores scripts related to managers that function the game in the background
+        ...
+        ├── PlantFSM                   # Stores scripts related to plant states and its manager
         ├── CardBehavior               # Stores scripts related to a card prefab
         ├── CardEffects                # Stores scripts consisting the logic behind every power cards
         ├── Cardshop                   # Stores scripts related to the card shop
         ├── CardSystem                 # Stores scripts related to card deck creation and usability during gameplay
         ├── Cookie                     # Stores scripts related to wagering cookies mechanic and cookie value modification
-      ├── Sprites                      # Parent folder of all sprites that are used in this project
+        ...
       ...
     ...
   ...
