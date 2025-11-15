@@ -17,9 +17,9 @@
 </table>
 
 <h2>☕ Cozy Kettle</h2>
-  <img width=200px align="left" src=https://github.com/rchtr-chn/CozyKettle/raw/main/readme-bank/cozykettle-cover-image.png>
+  <img width=350px align="left" src=https://github.com/rchtr-chn/CozyKettle/raw/main/readme-bank/cozykettle-cover-image.png>
 
-  Step into the charming, slightly dusty shoes of Anna, the new heir to your parents' run-down tea shop. Forget stressful deadlines, your path to success is paved with precision, warmth, and the perfect cup of tea. Embrace a cozy new life dedicated to the calming art of brewing.
+  Welcome to the cozy world of Slow Steeps. Simple Joys, where you play as Anna, the new owner of her parents' run-down tea shop, aiming for success not through stress, but through the calming art of brewing. The core gameplay revolves around mastering the Art of Tea by following precise recipes (temperature, steeping time) for classic and signature mixes, utilizing customer feedback and your own notes to achieve a five-star rating and build reputation. In addition to serving a diverse cast of patrons with speed and accuracy, you must Manage Your Shop With A Tap using a mobile phone interface to handle essential logistics: efficiently tracking inventory (especially crucial add-ons like milks and syrups), procuring new stock while balancing quality and cost, and monitoring the bank account to ensure profitability and investment in better ingredients, all while honoring your parents' legacy by turning the humble spot into a local treasure.
 
 ###
 
