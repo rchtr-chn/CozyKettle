@@ -67,7 +67,7 @@
   ```
 <h2>💡 Contributions</h2>
 
-  I dedicated around 60 hours in total to this project, developing all of the mechanics that make the game function as intended, such as the card system, the turn based system, the shop system, level select system, and etc.
+As the sole main programmer, I dedicated around 60 hours in total to this project, developing all of the mechanics that make the game function as intended, such as brewing minigame mechanics, inventory and shop system, cutscene mechanics, and etc.
   
 
 <h2>⬇️ Game Pages</h2>
