@@ -37,13 +37,12 @@
 <h2>📂 Folder Descriptions</h2>
 
   ```
-  ├── CozyKettle                     # Root folder of this project
+  ├── CozyKettle                       # Root folder of this project
     ...
     ├── Assets                         # Assets folder of this project
       ...
-      ├── Resources                    # Parent folder to organize blueprints (Scriptable Objects) and prefabs
+      ├── Resources                    # Parent folder to organize sprites, art assets, SOs, fonts, etc.
         ...
-        ├── CardData                   # Parent folder of all scriptable object types that are used in this project
         ├── Fonts                      # Stores all fonts used in this project
         ├── SoundEffects               # Stores all BGM and audio clips used in this project
         ├── VisualArtAssets            # Parent folder of all sprites that are used in this project
@@ -57,12 +56,26 @@
       ├── Scenes                       # Stores all Unity Scenes used in this project
       ├── Scripts                      # Parent folder of all types of scripts that are used in this project
         ...
-        ├── PlantFSM                   # Stores scripts related to plant states and its manager
-        ├── CardBehavior               # Stores scripts related to a card prefab
-        ├── CardEffects                # Stores scripts consisting the logic behind every power cards
-        ├── Cardshop                   # Stores scripts related to the card shop
-        ├── CardSystem                 # Stores scripts related to card deck creation and usability during gameplay
-        ├── Cookie                     # Stores scripts related to wagering cookies mechanic and cookie value modification
+        ├── BackgroundManagers         # Stores scripts related to all managers working in the background
+        ├── Cutscene                   # Stores scripts related to managing cutscene and timelines
+        ├── GardenScene                # Stores scripts related to the garden scene
+          ├── GardenInventory          # Stores scripts related to player's garden inventory
+          ├── PlantFSM                 # Stores scripts related to plant's base states and its manager
+        ├── StartMenuUI                # Stores scripts related to the start menu's UI
+          ├── CloudUI                  # Stores scripts related to the cloud UI in start menu scene
+        ├── StaticData                 # Stores scripts related to player's static data
+        ├── TeaShop                    # Stores scripts related to the tea shop scene
+          ├── Beverage                 # Stores scripts related to beverages
+          ├── Book                     # Stores scripts related to the recipe book
+          ├── Customer                 # Stores scripts related to customer and its manager
+          ├── Dispenser                # Stores scripts related to the tea shop's dispenser
+          ├── Enum                     # Stores scripts related to enum data
+          ├── FrenchPress              # Stores scripts related to the tea shop's french press
+          ├── Kettle                   # Stores scripts related to the tea shop's kettle
+          ├── Minigame                 # Stores scripts related to the tea shop's minigames' managers
+          ├── Phone                    # Stores scripts related to the players phone and its respective app/feature managers
+          ├── Stove                    # Stores scripts related to the tea shop's stove
+        ├── UI                         # Stores scripts related to the teap shop UI
         ...
       ...
     ...
